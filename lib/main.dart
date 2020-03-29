@@ -15,6 +15,7 @@ class TraiLeoni extends StatelessWidget {
       theme: ThemeData(
         dividerTheme: DividerThemeData(thickness: 1.0),
         appBarTheme: AppBarTheme(color: Colors.white, iconTheme: IconThemeData(color: Colors.black)),
+        primarySwatch: Colors.orange,
       ),
       themeMode: ThemeMode.system,
       darkTheme: ThemeData(),

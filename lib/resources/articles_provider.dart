@@ -16,6 +16,7 @@ class ArticlesProvider {
       // fetchAuthor: true,
       fetchFeaturedMedia: true,
       // fetchComments: true,
+      fetchCategories: true,
     );
 
     List<ArticleModel> articles = List<ArticleModel>();

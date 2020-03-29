@@ -20,6 +20,15 @@ class ArticleListElement extends StatelessWidget {
     return InkWell(
       child: Column(
         children: <Widget>[
+          ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: article.categories.length,
+              // scrollDirection: Axis.horizontal,
+              itemBuilder: (BuildContext context, int index) => Chip(
+                    label: Text(article.categories.elementAt(index).name),
+                backgroundColor: Theme.of(context).primaryColor,
+                  )),
           Text(article.title, textAlign: TextAlign.center, style: Theme.of(context).textTheme.headline5),
           Text(article.excerpt),
           article.featuredMediaUrl == null || !showImage
