@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_wordpress/flutter_wordpress.dart';
 
 class References {
-  static AppBar appBar(BuildContext context) => AppBar(
-        title: Text(S.of(context).appName, style: TextStyle(color: Colors.black)),
+  static AppBar appBar(BuildContext context, String title) => AppBar(
+        title: Text(title, style: TextStyle(color: Colors.black)),
         centerTitle: true,
-        backgroundColor: Colors.white,
         elevation: 0,
         bottom: PreferredSize(preferredSize: Size(double.infinity, 0.0), child: Divider(height: 0.0)),
       );

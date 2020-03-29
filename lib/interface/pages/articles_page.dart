@@ -1,5 +1,7 @@
 import 'package:app/bloc/articles_bloc.dart';
+import 'package:app/generated/i18n.dart';
 import 'package:app/interface/widget/article_list_element.dart';
+import 'package:app/models/article_model.dart';
 import 'package:app/references.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_wordpress/flutter_wordpress.dart';
@@ -10,10 +12,10 @@ class ArticlesPage extends StatelessWidget {
     articlesBloc.getArticles(1, References.articlesPerPage);
 
     return Scaffold(
-      appBar: References.appBar(context),
-      body: StreamBuilder<List<Post>>(
+      appBar: References.appBar(context, S.of(context).appName),
+      body: StreamBuilder<List<ArticleModel>>(
         stream: articlesBloc.currentRange,
-        builder: (BuildContext context, AsyncSnapshot<List<Post>> articlesSnapshot) {
+        builder: (BuildContext context, AsyncSnapshot<List<ArticleModel>> articlesSnapshot) {
           if (articlesSnapshot.hasData)
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),

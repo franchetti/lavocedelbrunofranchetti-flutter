@@ -1,10 +1,10 @@
+import 'package:app/interface/screen/article_detail_screen.dart';
+import 'package:app/models/article_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_wordpress/flutter_wordpress.dart';
-import 'package:html/parser.dart';
 
 class ArticleListElement extends StatelessWidget {
-  final Post article;
+  final ArticleModel article;
 
   const ArticleListElement({Key key, @required this.article}) : super(key: key);
 
@@ -13,37 +13,34 @@ class ArticleListElement extends StatelessWidget {
     return InkWell(
       child: Column(
         children: <Widget>[
-          Text(parse(article.title.rendered).documentElement.text, textAlign: TextAlign.center, style: Theme.of(context).textTheme.headline5),
-          Text(parse(article.excerpt.rendered).documentElement.text),
-          article.featuredMedia == null
+          Text(article.title, textAlign: TextAlign.center, style: Theme.of(context).textTheme.headline5),
+          Text(article.excerpt),
+          article.featuredMediaUrl == null
               ? Container()
               : Column(
                   children: <Widget>[
                     AspectRatio(
                       aspectRatio: 7 / 5,
                       child: CachedNetworkImage(
-                        imageUrl: article.featuredMedia.link,
+                        imageUrl: article.featuredMediaUrl,
                         fit: BoxFit.cover,
                         placeholder: (BuildContext context, String imageUrl) => Center(child: CircularProgressIndicator()),
                       ),
                     ),
-                    article.featuredMedia.title.rendered.isEmpty
+                    article.featuredMediaCaption.isEmpty
                         ? Container()
                         : Align(
                             alignment: AlignmentDirectional.centerEnd,
                             child: Padding(
                               padding: EdgeInsets.only(right: 4.0, top: 4.0),
-                              child: Text(
-                                article.featuredMedia.title.rendered,
-                                style: Theme.of(context).textTheme.caption,
-                              ),
+                              child: Text(article.featuredMediaCaption, style: Theme.of(context).textTheme.caption),
                             ),
                           ),
                   ],
                 ),
         ],
       ),
-      onTap: (){},
+      onTap: () => Navigator.of(context).pushNamed(ArticleDetailScreen.route, arguments: article),
     );
   }
 }
