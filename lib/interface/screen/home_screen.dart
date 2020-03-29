@@ -1,4 +1,5 @@
 import 'package:app/generated/i18n.dart';
+import 'package:app/interface/pages/articles_page.dart';
 import 'package:app/references.dart';
 import 'package:flutter/material.dart';
 
@@ -23,14 +24,21 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: References.appBar(context),
+      body: _buildBody(context),
       bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 
+  Widget _buildBody(BuildContext context) => <Widget>[
+        ArticlesPage(),
+        Container(),
+        Container(),
+      ].elementAt(_currentIndex);
+
   BottomNavigationBar _buildBottomNavigationBar() {
     return BottomNavigationBar(
       currentIndex: _currentIndex,
-      onTap: (int newIndex) => setState(()=> _currentIndex = newIndex),
+      onTap: (int newIndex) => setState(() => _currentIndex = newIndex),
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(icon: Icon(Icons.android), title: Text(S.of(context).home)),
         BottomNavigationBarItem(icon: Icon(Icons.android), title: Text(S.of(context).home)),

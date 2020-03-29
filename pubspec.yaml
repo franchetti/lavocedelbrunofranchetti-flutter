@@ -22,6 +22,12 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  # Logica
+  rxdart: ^0.23.1
+
+  # WordPress
+  flutter_wordpress: ^0.1.4
+
 
 dev_dependencies:
   flutter_test:
