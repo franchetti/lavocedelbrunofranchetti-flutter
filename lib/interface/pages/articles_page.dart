@@ -9,22 +9,25 @@ class ArticlesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     articlesBloc.getArticles(1, References.articlesPerPage);
 
-    return StreamBuilder<List<Post>>(
-      stream: articlesBloc.currentRange,
-      builder: (BuildContext context, AsyncSnapshot<List<Post>> articlesSnapshot) {
-        if (articlesSnapshot.hasData)
-          return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: ListView.separated(
-              itemBuilder: (BuildContext context, int index) => ArticleListElement(article: articlesSnapshot.data.elementAt(index)),
-              separatorBuilder: (BuildContext context, int index) => Divider(),
-              // TODO: Sostituire con il dato preconosciuto.
-              itemCount: articlesSnapshot.data.length,
-            ),
-          );
+    return Scaffold(
+      appBar: References.appBar(context),
+      body: StreamBuilder<List<Post>>(
+        stream: articlesBloc.currentRange,
+        builder: (BuildContext context, AsyncSnapshot<List<Post>> articlesSnapshot) {
+          if (articlesSnapshot.hasData)
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: ListView.separated(
+                itemBuilder: (BuildContext context, int index) => ArticleListElement(article: articlesSnapshot.data.elementAt(index)),
+                separatorBuilder: (BuildContext context, int index) => Divider(),
+                // TODO: Sostituire con il dato preconosciuto.
+                itemCount: articlesSnapshot.data.length,
+              ),
+            );
 
-        return Center(child: CircularProgressIndicator());
-      },
+          return Center(child: CircularProgressIndicator());
+        },
+      ),
     );
   }
 }
