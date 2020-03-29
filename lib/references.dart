@@ -8,15 +8,10 @@ class References {
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
-        bottom: PreferredSize(
-            preferredSize: Size(double.infinity, 0.0),
-            child: Divider(
-              height: 0.0,
-              thickness: 1.0,
-            )),
+        bottom: PreferredSize(preferredSize: Size(double.infinity, 0.0), child: Divider(height: 0.0)),
       );
 
   static WordPress wordPress = WordPress(baseUrl: "https://www.traileoni.it/");
-  
+
   static int articlesPerPage = 20;
 }

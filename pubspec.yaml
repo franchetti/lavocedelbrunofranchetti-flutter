@@ -28,6 +28,11 @@ dependencies:
   # WordPress
   flutter_wordpress: ^0.1.4
 
+  # Grafica
+  cached_network_image: ^2.0.0
+
+  # Utilità
+  html: ^0.14.0+3
 
 dev_dependencies:
   flutter_test:

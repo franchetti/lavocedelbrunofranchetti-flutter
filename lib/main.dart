@@ -12,7 +12,7 @@ class TraiLeoni extends StatelessWidget {
       // Non è possibile tradurre questa stringa perché S non è ancora inizializzato.
       title: "Tra i leoni",
       theme: ThemeData(
-
+        dividerTheme: DividerThemeData(thickness: 1.0),
       ),
       themeMode: ThemeMode.system,
       darkTheme: ThemeData(),

@@ -12,7 +12,7 @@ class ArticlesProvider {
         orderBy: PostOrderBy.date,
       ),
       // fetchAuthor: true,
-      // fetchFeaturedMedia: true,
+      fetchFeaturedMedia: true,
       // fetchComments: true,
     );
 
