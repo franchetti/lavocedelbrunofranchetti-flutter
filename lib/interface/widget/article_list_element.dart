@@ -5,8 +5,15 @@ import 'package:flutter/material.dart';
 
 class ArticleListElement extends StatelessWidget {
   final ArticleModel article;
+  final bool showImage;
 
-  const ArticleListElement({Key key, @required this.article}) : super(key: key);
+  const ArticleListElement({Key key, @required this.article})
+      : showImage = true,
+        super(key: key);
+
+  const ArticleListElement.reduced({Key key, @required this.article})
+      : showImage = false,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +22,7 @@ class ArticleListElement extends StatelessWidget {
         children: <Widget>[
           Text(article.title, textAlign: TextAlign.center, style: Theme.of(context).textTheme.headline5),
           Text(article.excerpt),
-          article.featuredMediaUrl == null
+          article.featuredMediaUrl == null || !showImage
               ? Container()
               : Column(
                   children: <Widget>[

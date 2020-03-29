@@ -6,12 +6,14 @@ class ArticleModel {
   final String excerpt;
   final String featuredMediaUrl;
   final String featuredMediaCaption;
+  final String body;
 
   ArticleModel({
     this.title,
     this.excerpt,
     this.featuredMediaUrl,
     this.featuredMediaCaption,
+    this.body,
   });
 
   factory ArticleModel.fromWordpressPost(Post wordpressPost) => ArticleModel(
@@ -19,5 +21,6 @@ class ArticleModel {
         excerpt: parse(wordpressPost.excerpt.rendered).documentElement.text,
         featuredMediaUrl: wordpressPost.featuredMedia.link,
         featuredMediaCaption: wordpressPost.featuredMedia.title.rendered,
+        body: parse(wordpressPost.content.rendered).documentElement.text.replaceAll("\n\n", "\n").trim(),
       );
 }

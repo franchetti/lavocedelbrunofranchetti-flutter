@@ -4,7 +4,6 @@ import 'package:app/interface/widget/article_list_element.dart';
 import 'package:app/models/article_model.dart';
 import 'package:app/references.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_wordpress/flutter_wordpress.dart';
 
 class ArticlesPage extends StatelessWidget {
   @override
@@ -20,7 +19,9 @@ class ArticlesPage extends StatelessWidget {
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: ListView.separated(
-                itemBuilder: (BuildContext context, int index) => ArticleListElement(article: articlesSnapshot.data.elementAt(index)),
+                itemBuilder: (BuildContext context, int index) => index.isEven
+                    ? ArticleListElement(article: articlesSnapshot.data.elementAt(index))
+                    : ArticleListElement.reduced(article: articlesSnapshot.data.elementAt(index)),
                 separatorBuilder: (BuildContext context, int index) => Divider(),
                 // TODO: Sostituire con il dato preconosciuto.
                 itemCount: articlesSnapshot.data.length,

@@ -12,7 +12,7 @@ class ArticleDetailScreen extends StatelessWidget {
     article = ModalRoute.of(context).settings.arguments;
 
     return Scaffold(
-      appBar: References.appBar(context, ""),
+      // appBar: References.appBar(context, ""),
       body: _buildBody(context),
     );
   }
@@ -20,7 +20,12 @@ class ArticleDetailScreen extends StatelessWidget {
   Widget _buildBody(BuildContext context) {
     return ListView(
       children: <Widget>[
-        Text(article.title,textAlign: TextAlign.center, style: Theme.of(context).textTheme.headline3),
+        Container(height: AppBar().preferredSize.height, child: References.appBar(context, "")),
+        Text(article.title, textAlign: TextAlign.center, style: Theme.of(context).textTheme.headline3),
+        Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Text(article.body, style: Theme.of(context).textTheme.bodyText2),
+        ),
       ],
     );
   }
