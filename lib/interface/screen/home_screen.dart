@@ -1,3 +1,4 @@
+import 'package:app/bloc/preferences_bloc.dart';
 import 'package:app/generated/i18n.dart';
 import 'package:app/interface/pages/articles_page.dart';
 import 'package:app/models/preferences_model.dart';
@@ -14,13 +15,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   static PreferencesModel preferences;
   int currentIndex;
-  static ArticlesPage articlesPage;
 
   @override
   void initState() {
     currentIndex = 0;
-
-    articlesPage = ArticlesPage();
 
     super.initState();
   }
@@ -37,16 +35,24 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildBody(BuildContext context) {
-    return IndexedStack(
-      index: currentIndex,
-      children: <Widget>[articlesPage, Container(), Container()],
-    );
+    return StreamBuilder<PreferencesModel>(
+      initialData: preferences,
+      stream: preferencesBloc.currentPreferences,
+      builder: (BuildContext context, AsyncSnapshot<PreferencesModel> preferencesSnapshot) {
+        if (preferencesSnapshot.hasData)
+          return IndexedStack(
+            index: currentIndex,
+            children: <Widget>[
+              ArticlesPage(preferences: preferencesSnapshot.data),
+              Container(),
+              Container(),
+            ],
+          );
 
-    <Widget>[
-      articlesPage,
-      Container(),
-      Container(),
-    ].elementAt(currentIndex);
+        preferencesBloc.getPreferences();
+        return Center(child: CircularProgressIndicator());
+      },
+    );
   }
 
   BottomNavigationBar _buildBottomNavigationBar() {

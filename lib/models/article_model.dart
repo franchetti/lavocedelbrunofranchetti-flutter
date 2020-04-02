@@ -3,6 +3,7 @@ import 'package:flutter_wordpress/flutter_wordpress.dart';
 import 'package:html/parser.dart';
 
 class ArticleModel {
+  final int id;
   final String title;
   final String excerpt;
   final String featuredMediaUrl;
@@ -12,6 +13,7 @@ class ArticleModel {
   final String link;
 
   ArticleModel({
+    this.id,
     this.title,
     this.excerpt,
     this.featuredMediaUrl,
@@ -31,5 +33,6 @@ class ArticleModel {
         plainBody: parse(wordpressPost.content.rendered).documentElement.text.replaceAll("\n\n", "\n").trim(),
         categories: wordpressPost.categories.map((rawCategory) => CategoryModel.fromWordpressPost(rawCategory)).toList(),
         link: wordpressPost.link,
+        id: wordpressPost.id,
       );
 }

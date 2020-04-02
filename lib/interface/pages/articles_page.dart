@@ -2,10 +2,17 @@ import 'package:app/bloc/articles_bloc.dart';
 import 'package:app/generated/i18n.dart';
 import 'package:app/interface/widget/article_list_element.dart';
 import 'package:app/models/article_model.dart';
+import 'package:app/models/preferences_model.dart';
 import 'package:app/references.dart';
 import 'package:flutter/material.dart';
 
 class ArticlesPage extends StatelessWidget {
+  final PreferencesModel preferences;
+
+  ArticlesPage({
+    @required this.preferences,
+  });
+
   @override
   Widget build(BuildContext context) {
     articlesBloc.getArticles(1, References.articlesPerPage);
@@ -20,8 +27,10 @@ class ArticlesPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: ListView.separated(
                 itemBuilder: (BuildContext context, int index) => index.isEven
-                    ? ArticleListElement(article: articlesSnapshot.data.elementAt(index))
-                    : ArticleListElement.reduced(article: articlesSnapshot.data.elementAt(index)),
+                    ? ArticleListElement(
+                        article: articlesSnapshot.data.elementAt(index), isSaved: preferences.savedPosts.contains(articlesSnapshot.data.elementAt(index).id))
+                    : ArticleListElement.reduced(
+                        article: articlesSnapshot.data.elementAt(index), isSaved: preferences.savedPosts.contains(articlesSnapshot.data.elementAt(index).id)),
                 separatorBuilder: (BuildContext context, int index) => Divider(),
                 // TODO: Sostituire con il dato preconosciuto.
                 itemCount: articlesSnapshot.data.length,

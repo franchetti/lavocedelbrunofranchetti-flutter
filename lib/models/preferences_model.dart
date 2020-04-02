@@ -1,7 +1,7 @@
 import 'package:app/resources/utility/preferences_helper.dart';
 
 class PreferencesModel {
-  List<String> savedPosts;
+  List<int> savedPosts;
 
   PreferencesModel({
     this.savedPosts,

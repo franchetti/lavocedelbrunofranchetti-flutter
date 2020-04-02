@@ -9,7 +9,7 @@ class ArticlesProvider {
       postParams: ParamsPostList(
         context: WordPressContext.view,
         pageNum: 1,
-        perPage: 20,
+        perPage: 10,
         order: Order.desc,
         orderBy: PostOrderBy.date,
       ),

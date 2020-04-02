@@ -1,6 +1,8 @@
 {
   "appName": "Tra i leoni",
   "home": "Home",
-  "saved": "Salvati"
+  "saved": "Salvati",
+  "saveForLater": "Salva per dopo",
+  "shareThisArticle": "Condividi questo articolo"
 
 }

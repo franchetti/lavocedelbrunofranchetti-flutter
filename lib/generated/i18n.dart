@@ -23,7 +23,9 @@ class S implements WidgetsLocalizations {
 
   String get appName => "Tra i leoni";
   String get home => "Home";
+  String get saveForLater => "Add to reading list";
   String get saved => "Saved";
+  String get shareThisArticle => "Share this article";
 }
 
 class $en extends S {
@@ -37,9 +39,13 @@ class $it extends S {
   TextDirection get textDirection => TextDirection.ltr;
 
   @override
+  String get shareThisArticle => "Condividi questo articolo";
+  @override
   String get saved => "Salvati";
   @override
   String get appName => "Tra i leoni";
+  @override
+  String get saveForLater => "Salva per dopo";
   @override
   String get home => "Home";
 }

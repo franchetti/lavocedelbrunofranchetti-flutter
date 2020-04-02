@@ -10,10 +10,10 @@ class PreferencesProvider {
     return preferencesModel;
   }
 
-  static Future<List<String>> getSavedPosts() async {
+  static Future<List<int>> getSavedPosts() async {
     List<String> savedPosts = (await SharedPreferences.getInstance()).getStringList("saved");
 
-    if (savedPosts == null) return List<String>();
-    return savedPosts;
+    if (savedPosts == null) return List<int>();
+    return savedPosts.map((articleId) => int.parse(articleId)).toList();
   }
 }
