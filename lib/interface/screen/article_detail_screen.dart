@@ -1,5 +1,6 @@
 import 'package:app/models/article_model.dart';
 import 'package:app/references.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 
@@ -24,6 +25,14 @@ class ArticleDetailScreen extends StatelessWidget {
     return ListView(
       children: <Widget>[
         Container(height: AppBar().preferredSize.height, child: References.appBar(context, "")),
+        AspectRatio(
+          aspectRatio: 7 / 5,
+          child: CachedNetworkImage(
+            imageUrl: article.featuredMediaUrl,
+            fit: BoxFit.cover,
+            placeholder: (BuildContext context, String imageUrl) => Center(child: CircularProgressIndicator()),
+          ),
+        ),
         Padding(
           padding: EdgeInsets.all(16.0),
           child: Column(
