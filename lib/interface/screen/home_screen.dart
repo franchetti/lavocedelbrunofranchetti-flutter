@@ -1,5 +1,6 @@
 import 'package:app/generated/i18n.dart';
 import 'package:app/interface/pages/articles_page.dart';
+import 'package:app/models/preferences_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -11,9 +12,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  static PreferencesModel preferences;
   int currentIndex;
-
-  ArticlesPage articlesPage;
+  static ArticlesPage articlesPage;
 
   @override
   void initState() {
@@ -26,6 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    preferences = ModalRoute.of(context).settings.arguments;
+
     return Scaffold(
       // appBar: References.appBar(context),
       body: _buildBody(context),

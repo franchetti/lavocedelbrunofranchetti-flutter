@@ -1,6 +1,7 @@
 import 'package:app/generated/i18n.dart';
 import 'package:app/interface/screen/article_detail_screen.dart';
 import 'package:app/interface/screen/home_screen.dart';
+import 'package:app/interface/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -25,7 +26,7 @@ class TraiLeoni extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      home: HomeScreen(),
+      home: SplashScreen(),
       routes: {
         HomeScreen.route: (BuildContext context) => HomeScreen(),
         ArticleDetailScreen.route: (BuildContext context) => ArticleDetailScreen(),

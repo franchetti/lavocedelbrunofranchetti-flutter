@@ -25,14 +25,16 @@ class ArticleDetailScreen extends StatelessWidget {
     return ListView(
       children: <Widget>[
         Container(height: AppBar().preferredSize.height, child: References.appBar(context, "")),
-        AspectRatio(
-          aspectRatio: 7 / 5,
-          child: CachedNetworkImage(
-            imageUrl: article.featuredMediaUrl,
-            fit: BoxFit.cover,
-            placeholder: (BuildContext context, String imageUrl) => Center(child: CircularProgressIndicator()),
-          ),
-        ),
+        article.featuredMediaUrl.isEmpty
+            ? Container()
+            : AspectRatio(
+                aspectRatio: 7 / 5,
+                child: CachedNetworkImage(
+                  imageUrl: article.featuredMediaUrl,
+                  fit: BoxFit.cover,
+                  placeholder: (BuildContext context, String imageUrl) => Center(child: CircularProgressIndicator()),
+                ),
+              ),
         Padding(
           padding: EdgeInsets.all(16.0),
           child: Column(
