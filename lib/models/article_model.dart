@@ -7,16 +7,19 @@ class ArticleModel {
   final String excerpt;
   final String featuredMediaUrl;
   final String featuredMediaCaption;
-  final String body;
+  final String htmlBody, plainBody;
   final List<CategoryModel> categories;
+  final String link;
 
   ArticleModel({
     this.title,
     this.excerpt,
     this.featuredMediaUrl,
     this.featuredMediaCaption,
-    this.body,
+    this.htmlBody,
+    this.plainBody,
     this.categories,
+    this.link,
   });
 
   factory ArticleModel.fromWordpressPost(Post wordpressPost) => ArticleModel(
@@ -24,7 +27,9 @@ class ArticleModel {
         excerpt: parse(wordpressPost.excerpt.rendered).documentElement.text,
         featuredMediaUrl: wordpressPost.featuredMedia.link,
         featuredMediaCaption: wordpressPost.featuredMedia.title.rendered,
-        body: parse(wordpressPost.content.rendered).documentElement.text.replaceAll("\n\n", "\n").trim(),
+        htmlBody: wordpressPost.content.rendered,
+        plainBody: parse(wordpressPost.content.rendered).documentElement.text.replaceAll("\n\n", "\n").trim(),
         categories: wordpressPost.categories.map((rawCategory) => CategoryModel.fromWordpressPost(rawCategory)).toList(),
+        link: wordpressPost.link,
       );
 }

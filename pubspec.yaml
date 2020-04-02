@@ -33,6 +33,8 @@ dependencies:
 
   # Utilità
   html: ^0.14.0+3
+  webview_flutter: ^0.3.19+9
+  flutter_html: ^0.11.1
 
 dev_dependencies:
   flutter_test:

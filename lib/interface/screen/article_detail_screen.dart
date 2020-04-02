@@ -1,6 +1,7 @@
 import 'package:app/models/article_model.dart';
 import 'package:app/references.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class ArticleDetailScreen extends StatelessWidget {
   static const String route = "/articleDetailScreen";
@@ -18,13 +19,20 @@ class ArticleDetailScreen extends StatelessWidget {
   }
 
   Widget _buildBody(BuildContext context) {
+    // return WebView(initialUrl: article.link,);
+
     return ListView(
       children: <Widget>[
         Container(height: AppBar().preferredSize.height, child: References.appBar(context, "")),
-        Text(article.title, textAlign: TextAlign.center, style: Theme.of(context).textTheme.headline3),
         Padding(
           padding: EdgeInsets.all(16.0),
-          child: Text(article.body, style: Theme.of(context).textTheme.bodyText2),
+          child: Column(
+            children: <Widget>[
+              Text(article.title, style: Theme.of(context).textTheme.headline5),
+              Divider(),
+              Html(data: article.htmlBody),
+            ],
+          ),
         ),
       ],
     );
