@@ -1,7 +1,7 @@
 import 'package:app/generated/i18n.dart';
 import 'package:app/interface/pages/articles_page.dart';
-import 'package:app/references.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String route = "/homeScreen";
@@ -11,11 +11,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _currentIndex;
+  int currentIndex;
+
+  ArticlesPage articlesPage;
 
   @override
   void initState() {
-    _currentIndex = 0;
+    currentIndex = 0;
+
+    articlesPage = ArticlesPage();
 
     super.initState();
   }
@@ -29,19 +33,26 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildBody(BuildContext context) => <Widget>[
-        ArticlesPage(),
-        Container(),
-        Container(),
-      ].elementAt(_currentIndex);
+  Widget _buildBody(BuildContext context) {
+    return IndexedStack(
+      index: currentIndex,
+      children: <Widget>[articlesPage, Container(), Container()],
+    );
+
+    <Widget>[
+      articlesPage,
+      Container(),
+      Container(),
+    ].elementAt(currentIndex);
+  }
 
   BottomNavigationBar _buildBottomNavigationBar() {
     return BottomNavigationBar(
-      currentIndex: _currentIndex,
-      onTap: (int newIndex) => setState(() => _currentIndex = newIndex),
+      currentIndex: currentIndex,
+      onTap: (int newIndex) => setState(() => currentIndex = newIndex),
       items: <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.android), title: Text(S.of(context).home)),
-        BottomNavigationBarItem(icon: Icon(Icons.android), title: Text(S.of(context).home)),
+        BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.newspaper), title: Text(S.of(context).home)),
+        BottomNavigationBarItem(icon: Icon(Icons.bookmark_border), title: Text(S.of(context).saved)),
         BottomNavigationBarItem(icon: Icon(Icons.android), title: Text(S.of(context).home)),
       ],
     );

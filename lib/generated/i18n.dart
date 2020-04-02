@@ -23,6 +23,7 @@ class S implements WidgetsLocalizations {
 
   String get appName => "Tra i leoni";
   String get home => "Home";
+  String get saved => "Saved";
 }
 
 class $en extends S {
@@ -35,6 +36,12 @@ class $it extends S {
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
+  @override
+  String get saved => "Salvati";
+  @override
+  String get appName => "Tra i leoni";
+  @override
+  String get home => "Home";
 }
 
 class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
