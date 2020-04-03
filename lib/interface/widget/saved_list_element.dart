@@ -5,6 +5,7 @@ import 'package:app/models/preferences_model.dart';
 import 'package:app/resources/utility/preferences_helper.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 
 class SavedListElement extends StatelessWidget {
   final ArticleModel article;
@@ -54,8 +55,11 @@ class SavedListElement extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
               ),
-              // TODO: Attivare.
-              ListTile(leading: Icon(Icons.share), title: Text(S.of(context).saveForLater)),
+              ListTile(
+                leading: Icon(Icons.share),
+                title: Text(S.of(context).shareThisArticle),
+                onTap: () => Share.share(article.link),
+              ),
             ],
           ),
         ),
