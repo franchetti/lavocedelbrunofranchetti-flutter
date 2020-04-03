@@ -1,8 +1,7 @@
-import 'package:app/generated/i18n.dart';
+import 'package:app/assets.dart';
 import 'package:app/interface/widget/article_list_element.dart';
 import 'package:app/models/article_model.dart';
 import 'package:app/models/preferences_model.dart';
-import 'package:app/references.dart';
 import 'package:flutter/material.dart';
 
 class ArticlesPage extends StatelessWidget {

@@ -24,8 +24,6 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
       appBar: AppBar(
         // title: Text(title, style: TextStyle(color: Colors.black)),
         centerTitle: true,
-        elevation: 0,
-        bottom: PreferredSize(preferredSize: Size(double.infinity, 0.0), child: Divider(height: 0.0)),
         actions: <Widget>[
           IconButton(
             icon: Icon(
