@@ -4,6 +4,7 @@ import 'package:app/resources/utility/preferences_helper.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:share/share.dart';
 
 class ArticleDetailScreen extends StatefulWidget {
   static const String route = "/articleDetailScreen";
@@ -42,6 +43,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
               setState(() {});
             },
           ),
+          IconButton(icon: Icon(Icons.share), onPressed: () => Share.share(_request.article.link)),
         ],
       ),
       body: _buildBody(context),
