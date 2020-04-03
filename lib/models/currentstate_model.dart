@@ -1,6 +1,5 @@
 import 'package:app/models/article_model.dart';
 import 'package:app/models/preferences_model.dart';
-import 'package:flutter/material.dart';
 
 class CurrentStateModel {
   List<ArticleModel> articles;
@@ -8,8 +7,8 @@ class CurrentStateModel {
   List<ArticleModel> saveds;
 
   CurrentStateModel({
-     this.articles,
-     this.preferences,
-     this.saveds,
+    this.articles,
+    this.preferences,
+    this.saveds,
   });
 }

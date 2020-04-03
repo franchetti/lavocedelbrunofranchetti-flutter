@@ -34,7 +34,8 @@ class ArticlesProvider {
     }
     debugPrint("Cerco gli articoli salvati: " + preferences.savedPosts.toString() + ".");
 
-    List<Post> rawArticles = await References.wordPress.fetchPosts(postParams: ParamsPostList(includePostIDs: preferences.savedPosts), fetchFeaturedMedia: true);
+    List<Post> rawArticles =
+        await References.wordPress.fetchPosts(postParams: ParamsPostList(includePostIDs: preferences.savedPosts), fetchFeaturedMedia: true);
 
     List<ArticleModel> articles = List<ArticleModel>();
     rawArticles.forEach((Post rawArticle) => articles.add(ArticleModel.fromWordpressPost(rawArticle)));

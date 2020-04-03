@@ -1,4 +1,3 @@
-import 'package:app/generated/i18n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_wordpress/flutter_wordpress.dart';
 

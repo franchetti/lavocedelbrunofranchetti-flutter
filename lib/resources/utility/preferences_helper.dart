@@ -1,4 +1,3 @@
-import 'package:app/bloc/articles_bloc.dart';
 import 'package:app/bloc/preferences_bloc.dart';
 import 'package:app/models/article_model.dart';
 import 'package:app/models/preferences_model.dart';

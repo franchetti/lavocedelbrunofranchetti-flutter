@@ -1,4 +1,3 @@
-import 'package:app/bloc/articles_bloc.dart';
 import 'package:app/generated/i18n.dart';
 import 'package:app/interface/widget/article_list_element.dart';
 import 'package:app/models/article_model.dart';
@@ -23,10 +22,8 @@ class ArticlesPage extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: ListView.separated(
           itemBuilder: (BuildContext context, int index) => index.isEven
-              ? ArticleListElement(
-                  article: articles.elementAt(index), preferences: preferences)
-              : ArticleListElement.reduced(
-                  article: articles.elementAt(index), preferences: preferences),
+              ? ArticleListElement(article: articles.elementAt(index), preferences: preferences)
+              : ArticleListElement.reduced(article: articles.elementAt(index), preferences: preferences),
           separatorBuilder: (BuildContext context, int index) => Divider(),
           // TODO: Sostituire con il dato preconosciuto.
           itemCount: articles.length,
