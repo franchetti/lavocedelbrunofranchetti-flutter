@@ -1,5 +1,6 @@
 import 'package:app/models/article_model.dart';
 import 'package:app/resources/repository.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_wordpress/flutter_wordpress.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -12,6 +13,7 @@ class ArticlesBloc {
     List<ArticleModel> articles = await Repository.getArticles(page, perPage);
 
     _articlesFetcher.sink.add(articles);
+    debugPrint("Aggiungo ${articles.length} nuovi articoli.");
 
     return articles;
   }

@@ -8,8 +8,8 @@ class ArticlesProvider {
     List<Post> rawArticles = await References.wordPress.fetchPosts(
       postParams: ParamsPostList(
         context: WordPressContext.view,
-        pageNum: 1,
-        perPage: 10,
+        pageNum: page,
+        perPage: perPage,
         order: Order.desc,
         orderBy: PostOrderBy.date,
       ),

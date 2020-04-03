@@ -1,5 +1,7 @@
+import 'package:app/bloc/currentstate_bloc.dart';
 import 'package:app/models/preferences_model.dart';
 import 'package:app/resources/repository.dart';
+import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
 class PreferencesBloc {
@@ -11,6 +13,7 @@ class PreferencesBloc {
     PreferencesModel preferences = await Repository.getPreferences();
 
     _preferencesFetcher.sink.add(preferences);
+    debugPrint("Aggiungo le nuove preferenze: ${preferences.savedPosts.length} articoli salvati.");
 
     return preferences;
   }

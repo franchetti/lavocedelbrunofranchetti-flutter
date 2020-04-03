@@ -8,37 +8,29 @@ import 'package:flutter/material.dart';
 
 class ArticlesPage extends StatelessWidget {
   final PreferencesModel preferences;
+  final List<ArticleModel> articles;
 
   ArticlesPage({
     @required this.preferences,
+    @required this.articles,
   });
 
   @override
   Widget build(BuildContext context) {
-    articlesBloc.getArticles(1, References.articlesPerPage);
-
     return Scaffold(
       appBar: References.appBar(context, S.of(context).appName),
-      body: StreamBuilder<List<ArticleModel>>(
-        stream: articlesBloc.currentRange,
-        builder: (BuildContext context, AsyncSnapshot<List<ArticleModel>> articlesSnapshot) {
-          if (articlesSnapshot.hasData)
-            return Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: ListView.separated(
-                itemBuilder: (BuildContext context, int index) => index.isEven
-                    ? ArticleListElement(
-                        article: articlesSnapshot.data.elementAt(index), isSaved: preferences.savedPosts.contains(articlesSnapshot.data.elementAt(index).id))
-                    : ArticleListElement.reduced(
-                        article: articlesSnapshot.data.elementAt(index), isSaved: preferences.savedPosts.contains(articlesSnapshot.data.elementAt(index).id)),
-                separatorBuilder: (BuildContext context, int index) => Divider(),
-                // TODO: Sostituire con il dato preconosciuto.
-                itemCount: articlesSnapshot.data.length,
-              ),
-            );
-
-          return Center(child: CircularProgressIndicator());
-        },
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        child: ListView.separated(
+          itemBuilder: (BuildContext context, int index) => index.isEven
+              ? ArticleListElement(
+                  article: articles.elementAt(index), preferences: preferences)
+              : ArticleListElement.reduced(
+                  article: articles.elementAt(index), preferences: preferences),
+          separatorBuilder: (BuildContext context, int index) => Divider(),
+          // TODO: Sostituire con il dato preconosciuto.
+          itemCount: articles.length,
+        ),
       ),
     );
   }

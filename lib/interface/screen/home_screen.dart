@@ -1,7 +1,9 @@
+import 'package:app/bloc/articles_bloc.dart';
+import 'package:app/bloc/currentstate_bloc.dart';
 import 'package:app/bloc/preferences_bloc.dart';
 import 'package:app/generated/i18n.dart';
 import 'package:app/interface/pages/articles_page.dart';
-import 'package:app/models/preferences_model.dart';
+import 'package:app/models/currentstate_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -13,7 +15,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  static PreferencesModel preferences;
   int currentIndex;
 
   @override
@@ -25,8 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    preferences = ModalRoute.of(context).settings.arguments;
-
     return Scaffold(
       // appBar: References.appBar(context),
       body: _buildBody(context),
@@ -35,21 +34,22 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildBody(BuildContext context) {
-    return StreamBuilder<PreferencesModel>(
-      initialData: preferences,
-      stream: preferencesBloc.currentPreferences,
-      builder: (BuildContext context, AsyncSnapshot<PreferencesModel> preferencesSnapshot) {
-        if (preferencesSnapshot.hasData)
+    articlesBloc.getArticles(1, 10);
+    preferencesBloc.getPreferences();
+
+    return StreamBuilder<CurrentStateModel>(
+      stream: currentStateBloc.currentState,
+      builder: (BuildContext context, AsyncSnapshot<CurrentStateModel> currentStateSnapshot) {
+        if (currentStateSnapshot.hasData)
           return IndexedStack(
             index: currentIndex,
             children: <Widget>[
-              ArticlesPage(preferences: preferencesSnapshot.data),
+              ArticlesPage(preferences: currentStateSnapshot.data.preferences, articles: currentStateSnapshot.data.articles),
               Container(),
               Container(),
             ],
           );
 
-        preferencesBloc.getPreferences();
         return Center(child: CircularProgressIndicator());
       },
     );
