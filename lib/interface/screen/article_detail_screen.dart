@@ -33,10 +33,10 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
             ),
             onPressed: () {
               if (_request.preferences.savedPosts.contains(_request.article.id)) {
-                PreferencesHelper.unsavePost(_request.article.id, _request.preferences);
+                PreferencesHelper.unsavePost(_request.article, _request.preferences);
                 _request.preferences.savedPosts.remove(_request.article.id);
               } else {
-                PreferencesHelper.savePost(_request.article.id, _request.preferences);
+                PreferencesHelper.savePost(_request.article, _request.preferences);
                 _request.preferences.savedPosts.add(_request.article.id);
               }
               setState(() {});

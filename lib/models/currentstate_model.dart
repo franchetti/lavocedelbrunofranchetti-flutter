@@ -3,11 +3,13 @@ import 'package:app/models/preferences_model.dart';
 import 'package:flutter/material.dart';
 
 class CurrentStateModel {
-  final List<ArticleModel> articles;
-  final PreferencesModel preferences;
+  List<ArticleModel> articles;
+  PreferencesModel preferences;
+  List<ArticleModel> saveds;
 
   CurrentStateModel({
-    @required this.articles,
-    @required this.preferences,
+     this.articles,
+     this.preferences,
+     this.saveds,
   });
 }

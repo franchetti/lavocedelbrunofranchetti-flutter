@@ -27,11 +27,12 @@ class ArticleModel {
   factory ArticleModel.fromWordpressPost(Post wordpressPost) => ArticleModel(
         title: parse(wordpressPost.title.rendered).documentElement.text,
         excerpt: parse(wordpressPost.excerpt.rendered).documentElement.text,
-        featuredMediaUrl: wordpressPost.featuredMedia.link,
-        featuredMediaCaption: wordpressPost.featuredMedia.title.rendered,
+        featuredMediaUrl: wordpressPost.featuredMedia != null ? wordpressPost.featuredMedia.link : null,
+        featuredMediaCaption: wordpressPost.featuredMedia != null ? wordpressPost.featuredMedia.title.rendered : null,
         htmlBody: wordpressPost.content.rendered,
         plainBody: parse(wordpressPost.content.rendered).documentElement.text.replaceAll("\n\n", "\n").trim(),
-        categories: wordpressPost.categories.map((rawCategory) => CategoryModel.fromWordpressPost(rawCategory)).toList(),
+        categories:
+            wordpressPost.categories != null ? wordpressPost.categories.map((rawCategory) => CategoryModel.fromWordpressPost(rawCategory)).toList() : null,
         link: wordpressPost.link,
         id: wordpressPost.id,
       );

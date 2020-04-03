@@ -88,9 +88,9 @@ class ArticleListElement extends StatelessWidget {
                 title: Text(preferences.savedPosts.contains(article.id) ? S.of(context).unsave : S.of(context).saveForLater),
                 onTap: () async {
                   if (preferences.savedPosts.contains(article.id))
-                    PreferencesHelper.unsavePost(article.id, preferences);
+                    PreferencesHelper.unsavePost(article, preferences);
                   else
-                    PreferencesHelper.savePost(article.id, preferences);
+                    PreferencesHelper.savePost(article, preferences);
 
                   Navigator.of(context).pop();
                 },

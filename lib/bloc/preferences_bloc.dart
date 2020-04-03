@@ -1,3 +1,4 @@
+import 'package:app/bloc/articles_bloc.dart';
 import 'package:app/bloc/currentstate_bloc.dart';
 import 'package:app/models/preferences_model.dart';
 import 'package:app/resources/repository.dart';
@@ -13,7 +14,7 @@ class PreferencesBloc {
     PreferencesModel preferences = await Repository.getPreferences();
 
     _preferencesFetcher.sink.add(preferences);
-    debugPrint("Aggiungo le nuove preferenze: ${preferences.savedPosts.length} articoli salvati.");
+    debugPrint("Aggiunto al sink delle preferenze.");
 
     return preferences;
   }

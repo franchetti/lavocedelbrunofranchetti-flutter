@@ -1,8 +1,7 @@
-import 'package:app/bloc/articles_bloc.dart';
 import 'package:app/bloc/currentstate_bloc.dart';
-import 'package:app/bloc/preferences_bloc.dart';
 import 'package:app/generated/i18n.dart';
 import 'package:app/interface/pages/articles_page.dart';
+import 'package:app/interface/pages/saved_page.dart';
 import 'package:app/models/currentstate_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -20,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     currentIndex = 0;
+    currentStateBloc.initialize();
 
     super.initState();
   }
@@ -34,18 +34,16 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildBody(BuildContext context) {
-    articlesBloc.getArticles(1, 10);
-    preferencesBloc.getPreferences();
-
     return StreamBuilder<CurrentStateModel>(
       stream: currentStateBloc.currentState,
       builder: (BuildContext context, AsyncSnapshot<CurrentStateModel> currentStateSnapshot) {
+        debugPrint("Aggiorno la visualizzazione.");
         if (currentStateSnapshot.hasData)
           return IndexedStack(
             index: currentIndex,
             children: <Widget>[
               ArticlesPage(preferences: currentStateSnapshot.data.preferences, articles: currentStateSnapshot.data.articles),
-              Container(),
+              SavedPage(currentState: currentStateSnapshot.data),
               Container(),
             ],
           );

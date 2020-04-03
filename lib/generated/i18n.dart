@@ -23,6 +23,8 @@ class S implements WidgetsLocalizations {
 
   String get appName => "Tra i leoni";
   String get home => "Home";
+  String get noSaveds => "Your reading list is empty";
+  String get readingList => "Reading list";
   String get saveForLater => "Add to reading list";
   String get saved => "Saved";
   String get shareThisArticle => "Share this article";
@@ -46,9 +48,13 @@ class $it extends S {
   @override
   String get appName => "Tra i leoni";
   @override
+  String get noSaveds => "La tua lista di lettura è vuota";
+  @override
   String get saveForLater => "Salva per dopo";
   @override
   String get unsave => "Rimuovi dalla lista di lettura";
+  @override
+  String get readingList => "Lista di lettura";
   @override
   String get home => "Home";
 }

@@ -4,5 +4,7 @@
   "saved": "Saved",
   "saveForLater": "Add to reading list",
   "shareThisArticle": "Share this article",
-  "unsave": "Unsave this article"
+  "unsave": "Unsave this article",
+  "readingList": "Reading list",
+  "noSaveds": "Your reading list is empty"
 }
