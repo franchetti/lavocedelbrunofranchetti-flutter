@@ -28,7 +28,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
           IconButton(
             icon: Icon(
               _request.preferences.savedPosts.contains(_request.article.id) ? Icons.bookmark : Icons.bookmark_border,
-              color: _request.preferences.savedPosts.contains(_request.article.id) ? Colors.redAccent : Colors.black,
+              color: _request.preferences.savedPosts.contains(_request.article.id) ? Colors.redAccent : Theme.of(context).iconTheme.color,
             ),
             onPressed: () {
               if (_request.preferences.savedPosts.contains(_request.article.id)) {

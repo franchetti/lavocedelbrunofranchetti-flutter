@@ -42,8 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
             index: currentIndex,
             children: <Widget>[
               ArticlesPage(preferences: currentStateSnapshot.data.preferences, articles: currentStateSnapshot.data.articles),
-              SavedPage(currentState: currentStateSnapshot.data),
               Container(),
+              SavedPage(currentState: currentStateSnapshot.data),
             ],
           );
 
@@ -58,8 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
       onTap: (int newIndex) => setState(() => currentIndex = newIndex),
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.newspaper), title: Text(S.of(context).home)),
+        BottomNavigationBarItem(icon: Icon(Icons.search), title: Text(S.of(context).search)),
         BottomNavigationBarItem(icon: Icon(Icons.bookmark_border), title: Text(S.of(context).saved)),
-        BottomNavigationBarItem(icon: Icon(Icons.android), title: Text(S.of(context).home)),
       ],
     );
   }

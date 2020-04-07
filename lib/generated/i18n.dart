@@ -27,6 +27,7 @@ class S implements WidgetsLocalizations {
   String get readingList => "Reading list";
   String get saveForLater => "Add to reading list";
   String get saved => "Saved";
+  String get search => "Find";
   String get shareThisArticle => "Share this article";
   String get unsave => "Unsave this article";
 }
@@ -41,6 +42,8 @@ class $it extends S {
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
+  @override
+  String get search => "Cerca";
   @override
   String get shareThisArticle => "Condividi questo articolo";
   @override
