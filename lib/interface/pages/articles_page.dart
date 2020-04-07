@@ -16,7 +16,9 @@ class ArticlesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Image(image: Images.logoUfficiale, fit: BoxFit.fitHeight, height: 40.0), centerTitle: true),
+      appBar: AppBar(
+          title: Image(image: Theme.of(context).brightness == Brightness.dark ? Images.icExtendedDark : Images.icExtended, fit: BoxFit.fitHeight, height: 40.0),
+          centerTitle: true),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: ListView.separated(

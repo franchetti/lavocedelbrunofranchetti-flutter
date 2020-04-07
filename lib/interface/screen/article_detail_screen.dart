@@ -67,6 +67,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
         Padding(
           padding: EdgeInsets.all(16.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(_request.article.title, style: Theme.of(context).textTheme.headline5),
               Divider(),

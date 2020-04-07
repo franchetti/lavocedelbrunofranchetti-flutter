@@ -45,6 +45,7 @@ dev_dependencies:
 
   flutter_launcher_icons: ^0.7.4
   r_flutter: ^0.6.0
+  # flutter packages pub run r_flutter:generate
 
 flutter:
   # The following line ensures that the Material Icons font is

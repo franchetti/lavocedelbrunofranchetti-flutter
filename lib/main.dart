@@ -20,8 +20,9 @@ class TraiLeoni extends StatelessWidget {
       ),
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData(
-        brightness: Brightness.dark,
         primarySwatch: Colors.orange,
+        accentColor: Colors.orange,
+        brightness: Brightness.dark,
       ),
       localizationsDelegates: [
         S.delegate,
