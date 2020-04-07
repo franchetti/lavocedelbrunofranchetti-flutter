@@ -16,12 +16,21 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex;
+  FocusNode focusNode;
 
   @override
   void initState() {
     currentIndex = 0;
+    focusNode = FocusNode();
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    focusNode.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -43,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
             index: currentIndex,
             children: <Widget>[
               ArticlesPage(currentState: currentStateSnapshot.data),
-              SearchPage(currentState: currentStateSnapshot.data),
+              SearchPage(currentState: currentStateSnapshot.data, focusNode: focusNode),
               SavedPage(currentState: currentStateSnapshot.data),
             ],
           );
@@ -56,7 +65,14 @@ class _HomeScreenState extends State<HomeScreen> {
   BottomNavigationBar _buildBottomNavigationBar() {
     return BottomNavigationBar(
       currentIndex: currentIndex,
-      onTap: (int newIndex) => setState(() => currentIndex = newIndex),
+      onTap: (int newIndex) {
+        if (newIndex == 1)
+          focusNode.requestFocus();
+        else
+          FocusScope.of(context).requestFocus(FocusNode());
+
+        setState(() => currentIndex = newIndex);
+      },
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.newspaper), title: Text(S.of(context).home)),
         BottomNavigationBarItem(icon: Icon(Icons.search), title: Text(S.of(context).search)),

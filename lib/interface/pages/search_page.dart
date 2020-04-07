@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 
 class SearchPage extends StatefulWidget {
   final CurrentStateModel currentState;
+  final FocusNode focusNode;
 
-  const SearchPage({Key key, @required this.currentState}) : super(key: key);
+  const SearchPage({Key key, @required this.currentState, @required this.focusNode}) : super(key: key);
 
   @override
   _SearchPageState createState() => _SearchPageState(currentState: currentState);
@@ -38,6 +39,7 @@ class _SearchPageState extends State<SearchPage> {
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.search,
           onSubmitted: (String query) => searchBloc.search(query),
+          focusNode: widget.focusNode,
         ),
       ),
       body: Padding(
