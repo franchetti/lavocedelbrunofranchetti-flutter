@@ -7,5 +7,6 @@
   "unsave": "Rimuovi dalla lista di lettura",
   "readingList": "Lista di lettura",
   "noSaveds": "La tua lista di lettura è vuota",
-  "search": "Cerca"
+  "search": "Cerca",
+  "insertTextToSearch": "Inserisci del testo da cercare..."
 }

@@ -1,5 +1,5 @@
 import 'package:app/generated/i18n.dart';
-import 'package:app/interface/widget/saved_list_element.dart';
+import 'package:app/interface/widget/article_list_element_collapsed.dart';
 import 'package:app/models/currentstate_model.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +25,7 @@ class SavedPage extends StatelessWidget {
             ? Center(child: Text(S.of(context).noSaveds))
             : ListView.separated(
                 itemBuilder: (BuildContext context, int index) =>
-                    SavedListElement(article: currentState.saveds.elementAt(index), preferences: currentState.preferences),
+                    ArticleListElementCollapsed(article: currentState.saveds.elementAt(index), preferences: currentState.preferences),
                 separatorBuilder: (BuildContext context, int index) => Divider(),
                 itemCount: currentState.saveds.length,
               ),

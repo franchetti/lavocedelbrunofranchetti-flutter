@@ -7,5 +7,6 @@
   "unsave": "Unsave this article",
   "readingList": "Reading list",
   "noSaveds": "Your reading list is empty",
-  "search": "Find"
+  "search": "Find",
+  "insertTextToSearch": "Insert your query..."
 }

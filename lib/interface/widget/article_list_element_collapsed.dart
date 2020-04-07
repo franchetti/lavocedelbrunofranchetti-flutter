@@ -7,11 +7,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 
-class SavedListElement extends StatelessWidget {
+class ArticleListElementCollapsed extends StatelessWidget {
   final ArticleModel article;
   final PreferencesModel preferences;
 
-  const SavedListElement({Key key, @required this.article, @required this.preferences}) : super(key: key);
+  const ArticleListElementCollapsed({Key key, @required this.article, @required this.preferences}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

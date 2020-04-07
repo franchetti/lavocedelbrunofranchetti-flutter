@@ -2,6 +2,7 @@ import 'package:app/bloc/currentstate_bloc.dart';
 import 'package:app/generated/i18n.dart';
 import 'package:app/interface/pages/articles_page.dart';
 import 'package:app/interface/pages/saved_page.dart';
+import 'package:app/interface/pages/search_page.dart';
 import 'package:app/models/currentstate_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -41,8 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
           return IndexedStack(
             index: currentIndex,
             children: <Widget>[
-              ArticlesPage(preferences: currentStateSnapshot.data.preferences, articles: currentStateSnapshot.data.articles),
-              Container(),
+              ArticlesPage(currentState: currentStateSnapshot.data),
+              SearchPage(currentState: currentStateSnapshot.data),
               SavedPage(currentState: currentStateSnapshot.data),
             ],
           );
