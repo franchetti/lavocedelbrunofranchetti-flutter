@@ -8,5 +8,7 @@
   "readingList": "Lista di lettura",
   "noSaveds": "La tua lista di lettura è vuota",
   "search": "Cerca",
-  "insertTextToSearch": "Inserisci del testo da cercare..."
+  "insertTextToSearch": "Inserisci del testo da cercare...",
+  "darkTheme": "Utilizza il tema scuro",
+  "systemTheme": "Utilizza impostazione di sistema"
 }

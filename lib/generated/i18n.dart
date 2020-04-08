@@ -22,6 +22,7 @@ class S implements WidgetsLocalizations {
   TextDirection get textDirection => TextDirection.ltr;
 
   String get appName => "Tra i leoni";
+  String get darkTheme => "Use dark theme";
   String get home => "Home";
   String get insertTextToSearch => "Insert your query...";
   String get noSaveds => "Your reading list is empty";
@@ -30,6 +31,7 @@ class S implements WidgetsLocalizations {
   String get saved => "Saved";
   String get search => "Find";
   String get shareThisArticle => "Share this article";
+  String get systemTheme => "Use system theme";
   String get unsave => "Unsave this article";
 }
 
@@ -50,9 +52,13 @@ class $it extends S {
   @override
   String get saved => "Salvati";
   @override
+  String get systemTheme => "Utilizza impostazione di sistema";
+  @override
   String get appName => "Tra i leoni";
   @override
   String get noSaveds => "La tua lista di lettura è vuota";
+  @override
+  String get darkTheme => "Utilizza il tema scuro";
   @override
   String get saveForLater => "Salva per dopo";
   @override

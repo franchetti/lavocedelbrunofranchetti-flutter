@@ -8,5 +8,7 @@
   "readingList": "Reading list",
   "noSaveds": "Your reading list is empty",
   "search": "Find",
-  "insertTextToSearch": "Insert your query..."
+  "insertTextToSearch": "Insert your query...",
+  "darkTheme": "Use dark theme",
+  "systemTheme": "Use system theme"
 }
