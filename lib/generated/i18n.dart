@@ -24,8 +24,10 @@ class S implements WidgetsLocalizations {
   String get appName => "Tra i leoni";
   String get bocconiUniverisityNewspaper => "Bocconi University Newspaper";
   String get darkTheme => "Use dark theme";
+  String get darkThemeTitle => "Dark theme";
   String get home => "Home";
   String get insertTextToSearch => "Insert your query...";
+  String get language => "Language";
   String get noSaveds => "Your reading list is empty";
   String get readingList => "Reading list";
   String get saveForLater => "Add to reading list";
@@ -56,6 +58,10 @@ class $it extends S {
   String get noSaveds => "La tua lista di lettura è vuota";
   @override
   String get darkTheme => "Utilizza il tema scuro";
+  @override
+  String get language => "Lingua";
+  @override
+  String get darkThemeTitle => "Tema scuro";
   @override
   String get bocconiUniverisityNewspaper => "Bocconi University Newspaper";
   @override

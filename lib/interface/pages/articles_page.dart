@@ -41,6 +41,7 @@ class ArticlesPage extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 DrawerHeader(
                   child: Column(
@@ -55,18 +56,28 @@ class ArticlesPage extends StatelessWidget {
                     ],
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  child: Text(S.of(context).darkThemeTitle, style: Theme.of(context).textTheme.headline6,),
+                ),
+                SwitchListTile(
+                  title: Text(S.of(context).darkTheme),
+                  value: (settingsBloc.latestSettingsModel.themeMode == ThemeMode.dark),
+                  activeColor: Theme.of(context).accentColor,
+                  onChanged: (settingsBloc.latestSettingsModel.themeMode == ThemeMode.system)
+                      ? null
+                      : (bool dark) => settingsBloc.updateTheme(dark ? ThemeMode.dark : ThemeMode.light),
+                ),
                 CheckboxListTile(
                   title: Text(S.of(context).systemTheme),
                   value: (settingsBloc.latestSettingsModel.themeMode == ThemeMode.system),
                   onChanged: (bool system) => settingsBloc
                       .updateTheme(system ? ThemeMode.system : ((Theme.of(context).brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light))),
                 ),
-                SwitchListTile(
-                  title: Text(S.of(context).darkTheme),
-                  value: (settingsBloc.latestSettingsModel.themeMode == ThemeMode.dark),
-                  onChanged: (settingsBloc.latestSettingsModel.themeMode == ThemeMode.system)
-                      ? null
-                      : (bool dark) => settingsBloc.updateTheme(dark ? ThemeMode.dark : ThemeMode.light),
+                Divider(),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  child: Text(S.of(context).language, style: Theme.of(context).textTheme.headline6,),
                 ),
                 _buildLanguageDropdown(context),
               ],

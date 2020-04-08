@@ -11,5 +11,7 @@
   "insertTextToSearch": "Insert your query...",
   "darkTheme": "Use dark theme",
   "systemTheme": "Use system theme",
+  "darkThemeTitle": "Dark theme",
+  "language": "Language",
   "bocconiUniverisityNewspaper": "Bocconi University Newspaper"
 }

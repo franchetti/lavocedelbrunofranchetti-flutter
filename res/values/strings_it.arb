@@ -11,5 +11,7 @@
   "insertTextToSearch": "Inserisci del testo da cercare...",
   "darkTheme": "Utilizza il tema scuro",
   "systemTheme": "Utilizza impostazione di sistema",
+  "darkThemeTitle": "Tema scuro",
+  "language": "Lingua",
   "bocconiUniverisityNewspaper": "Bocconi University Newspaper"
 }
