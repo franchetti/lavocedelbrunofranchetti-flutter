@@ -52,7 +52,7 @@ class ArticlesPage extends StatelessWidget {
                         S.of(context).bocconiUniverisityNewspaper.toUpperCase(),
                         style: Theme.of(context).textTheme.caption.copyWith(letterSpacing: 1.0, fontStyle: FontStyle.italic),
                       ),
-                      Text(S.of(context).appName),
+                      // Text(S.of(context).appName),
                     ],
                   ),
                 ),
