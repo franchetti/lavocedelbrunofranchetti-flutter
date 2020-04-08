@@ -1,4 +1,5 @@
 import 'package:app/models/settings_model.dart';
+import 'package:app/resources/utility/preferences_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -15,10 +16,12 @@ class SettingsBloc {
 
   SettingsModel latestSettingsModel;
 
-  void initialize(BuildContext context) {
+  Future<void> initialize(BuildContext context) async {
     if (latestSettingsModel == null) {
       // Vedere se c'è uno stato salvato.
-      if (false) {
+      if (true) {
+        latestSettingsModel = await PreferencesHelper.getSettings();
+        updateVisualization();
       }
       // Se non c'è uno stato salvato...
       else {
@@ -26,10 +29,9 @@ class SettingsBloc {
 
         updateLocale(Localizations.localeOf(context));
         updateTheme(ThemeMode.system);
-
-        lastLocale.listen((onLocaleChange) => updateVisualization());
-        lastThemeMode.listen((onThemeChange) => updateVisualization());
       }
+      lastLocale.listen((onLocaleChange) => updateVisualization());
+      lastThemeMode.listen((onThemeChange) => updateVisualization());
     }
   }
 
@@ -41,17 +43,21 @@ class SettingsBloc {
   }
 
   void updateLocale(Locale newLocale) {
+    debugPrint("Aggiorno la lingua.");
     latestSettingsModel.locale = newLocale;
     _localeStream.sink.add(newLocale);
   }
 
   void updateTheme(ThemeMode themeMode) {
+    debugPrint("Aggiorno il tema.");
     latestSettingsModel.themeMode = themeMode;
     _themeModeStream.sink.add(themeMode);
   }
 
   void updateVisualization() {
+    debugPrint("Aggiorno le impostazioni nella visualizzazione.");
     _settingsStream.sink.add(latestSettingsModel);
+    PreferencesHelper.setSettings(latestSettingsModel);
   }
 
   dispose() {
