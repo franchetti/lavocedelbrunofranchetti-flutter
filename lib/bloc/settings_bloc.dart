@@ -33,6 +33,13 @@ class SettingsBloc {
     }
   }
 
+  String currentLocaleIso() {
+    String currentLocaleIso =
+        "${settingsBloc.latestSettingsModel.locale.languageCode}${settingsBloc.latestSettingsModel.locale.countryCode == null ? "" : "_${settingsBloc.latestSettingsModel.locale.countryCode}"}";
+
+    return currentLocaleIso;
+  }
+
   void updateLocale(Locale newLocale) {
     latestSettingsModel.locale = newLocale;
     _localeStream.sink.add(newLocale);

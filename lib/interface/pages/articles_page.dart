@@ -37,22 +37,46 @@ class ArticlesPage extends StatelessWidget {
 
   Drawer _buildDrawer(BuildContext context) {
     return Drawer(
-      child: ListView(
+      child: Column(
         children: <Widget>[
-          CheckboxListTile(
-            title: Text(S.of(context).systemTheme),
-            value: (settingsBloc.latestSettingsModel.themeMode == ThemeMode.system),
-            onChanged: (bool system) =>
-                settingsBloc.updateTheme(system ? ThemeMode.system : ((Theme.of(context).brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light))),
+          Expanded(
+            child: Column(
+              children: <Widget>[
+                DrawerHeader(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Expanded(child: Image(image: Theme.of(context).brightness == Brightness.dark ? Images.icExtendedDark : Images.icExtended)),
+                      Text(
+                        S.of(context).bocconiUniverisityNewspaper.toUpperCase(),
+                        style: Theme.of(context).textTheme.caption.copyWith(letterSpacing: 1.0, fontStyle: FontStyle.italic),
+                      ),
+                      Text(S.of(context).appName),
+                    ],
+                  ),
+                ),
+                CheckboxListTile(
+                  title: Text(S.of(context).systemTheme),
+                  value: (settingsBloc.latestSettingsModel.themeMode == ThemeMode.system),
+                  onChanged: (bool system) => settingsBloc
+                      .updateTheme(system ? ThemeMode.system : ((Theme.of(context).brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light))),
+                ),
+                SwitchListTile(
+                  title: Text(S.of(context).darkTheme),
+                  value: (settingsBloc.latestSettingsModel.themeMode == ThemeMode.dark),
+                  onChanged: (settingsBloc.latestSettingsModel.themeMode == ThemeMode.system)
+                      ? null
+                      : (bool dark) => settingsBloc.updateTheme(dark ? ThemeMode.dark : ThemeMode.light),
+                ),
+                _buildLanguageDropdown(context),
+              ],
+            ),
           ),
-          SwitchListTile(
-            title: Text(S.of(context).darkTheme),
-            value: (settingsBloc.latestSettingsModel.themeMode == ThemeMode.dark),
-            onChanged: (settingsBloc.latestSettingsModel.themeMode == ThemeMode.system)
-                ? null
-                : (bool dark) => settingsBloc.updateTheme(dark ? ThemeMode.dark : ThemeMode.light),
-          ),
-          _buildLanguageDropdown(context),
+          // TODO: Valutare la questione.
+          /*Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("© 2020 Emilio Dalla Torre"),
+          )*/
         ],
       ),
     );
@@ -68,7 +92,7 @@ class ArticlesPage extends StatelessWidget {
               .map((e) =>
                   {"name": LanguageHelper.getLanguageName(e.languageCode), "isoCode": "${e.languageCode}${e.countryCode == "" ? "" : "_${e.countryCode}"}"})
               .toList(),
-          initialValue: "${settingsBloc.latestSettingsModel.locale.languageCode}${settingsBloc.latestSettingsModel.locale.countryCode == "" ? "" : "_${settingsBloc.latestSettingsModel.locale.countryCode}"}",
+          initialValue: settingsBloc.currentLocaleIso(),
           itemBuilder: (Language language) => Text(language.name, style: Theme.of(context).textTheme.button),
           onValuePicked: (Language language) => settingsBloc.updateLocale(Locale.fromSubtags(languageCode: language.isoCode)),
         ),

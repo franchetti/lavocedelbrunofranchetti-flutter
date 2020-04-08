@@ -22,6 +22,7 @@ class S implements WidgetsLocalizations {
   TextDirection get textDirection => TextDirection.ltr;
 
   String get appName => "Tra i leoni";
+  String get bocconiUniverisityNewspaper => "Bocconi University Newspaper";
   String get darkTheme => "Use dark theme";
   String get home => "Home";
   String get insertTextToSearch => "Insert your query...";
@@ -46,10 +47,6 @@ class $it extends S {
   TextDirection get textDirection => TextDirection.ltr;
 
   @override
-  String get search => "Cerca";
-  @override
-  String get shareThisArticle => "Condividi questo articolo";
-  @override
   String get saved => "Salvati";
   @override
   String get systemTheme => "Utilizza impostazione di sistema";
@@ -60,15 +57,21 @@ class $it extends S {
   @override
   String get darkTheme => "Utilizza il tema scuro";
   @override
+  String get bocconiUniverisityNewspaper => "Bocconi University Newspaper";
+  @override
+  String get readingList => "Lista di lettura";
+  @override
+  String get home => "Home";
+  @override
+  String get search => "Cerca";
+  @override
+  String get shareThisArticle => "Condividi questo articolo";
+  @override
   String get saveForLater => "Salva per dopo";
   @override
   String get unsave => "Rimuovi dalla lista di lettura";
   @override
-  String get readingList => "Lista di lettura";
-  @override
   String get insertTextToSearch => "Inserisci del testo da cercare...";
-  @override
-  String get home => "Home";
 }
 
 class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
