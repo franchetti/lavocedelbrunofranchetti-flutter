@@ -94,6 +94,7 @@ class _SearchPageState extends State<SearchPage> {
                         aspectRatio: 7 / 5,
                         child: CarouselSlider(
                           options: CarouselOptions(
+                            autoPlay: true,
                             aspectRatio: 7 / 5,
                             viewportFraction: 1.0,
                             autoPlayInterval: Duration(seconds: 1),
