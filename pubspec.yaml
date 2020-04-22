@@ -31,6 +31,7 @@ dependencies:
   # Grafica
   cached_network_image: ^2.0.0
   font_awesome_flutter: ^8.8.1
+  carousel_slider: ^2.0.0
 
   # Utilità
   html: ^0.14.0+3

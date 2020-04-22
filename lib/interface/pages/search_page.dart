@@ -2,10 +2,12 @@ import 'package:app/bloc/categories_bloc.dart';
 import 'package:app/bloc/search_bloc.dart';
 import 'package:app/generated/i18n.dart';
 import 'package:app/interface/widget/article_list_element_collapsed.dart';
+import 'package:app/interface/widget/article_slider_element.dart';
 import 'package:app/interface/widget/category_list_element.dart';
 import 'package:app/models/article_model.dart';
 import 'package:app/models/category_model.dart';
 import 'package:app/models/currentstate_model.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatefulWidget {
@@ -67,10 +69,7 @@ class _SearchPageState extends State<SearchPage> {
           ],
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
-        child: _buildBody(context),
-      ),
+      body: _buildBody(context),
     );
   }
 
@@ -89,10 +88,20 @@ class _SearchPageState extends State<SearchPage> {
           : state == SearchState.INACTIVE
               ? ListView(
                   children: <Widget>[
-                    AspectRatio(
-                      aspectRatio: 4 / 3,
-                      child: Container(
-                        color: Colors.green,
+                    Padding(
+                      padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0, bottom:4.0),
+                      child: AspectRatio(
+                        aspectRatio: 7 / 5,
+                        child: CarouselSlider(
+                          options: CarouselOptions(
+                            aspectRatio: 7 / 5,
+                            viewportFraction: 1.0,
+                            autoPlayInterval: Duration(seconds: 1),
+                          ),
+                          items: currentState.articles.reversed
+                              .map((ArticleModel article) => ArticleSliderElement(article: article, preferences: currentState.preferences))
+                              .toList(),
+                        ),
                       ),
                     ),
                     StreamBuilder<List<CategoryModel>>(
@@ -104,7 +113,7 @@ class _SearchPageState extends State<SearchPage> {
                             itemCount: categoriesSnapshot.data.length,
                             physics: NeverScrollableScrollPhysics(),
                             itemBuilder: (BuildContext context, int index) => CategoryListElement(category: categoriesSnapshot.data.elementAt(index)),
-                            separatorBuilder: (BuildContext context, int index) => Divider(height: 0.0),
+                            separatorBuilder: (BuildContext context, int index) => Divider(height: 0.0, indent: 16.0, endIndent: 16.0),
                           );
 
                         categoriesBloc.getCategories();
