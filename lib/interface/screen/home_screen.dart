@@ -66,11 +66,14 @@ class _HomeScreenState extends State<HomeScreen> {
     return BottomNavigationBar(
       currentIndex: currentIndex,
       onTap: (int newIndex) {
+        /*
         if (newIndex == 1)
           focusNode.requestFocus();
         else
           FocusScope.of(context).requestFocus(FocusNode());
+        */
 
+        FocusScope.of(context).requestFocus(FocusNode());
         setState(() => currentIndex = newIndex);
       },
       items: <BottomNavigationBarItem>[

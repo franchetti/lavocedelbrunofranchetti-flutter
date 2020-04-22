@@ -28,7 +28,7 @@ class TraiLeoni extends StatelessWidget {
           darkTheme: ThemeData(
             primarySwatch: Colors.orange,
             accentColor: Colors.orange,
-            brightness: Brightness.dark,
+            brightness: Brightness.dark
           ),
           localizationsDelegates: [
             S.delegate,

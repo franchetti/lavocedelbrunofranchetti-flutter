@@ -32,7 +32,7 @@ class ArticleModel {
         htmlBody: wordpressPost.content.rendered,
         plainBody: parse(wordpressPost.content.rendered).documentElement.text.replaceAll("\n\n", "\n").trim(),
         categories:
-            wordpressPost.categories != null ? wordpressPost.categories.map((rawCategory) => CategoryModel.fromWordpressPost(rawCategory)).toList() : null,
+            wordpressPost.categories != null ? wordpressPost.categories.map((rawCategory) => CategoryModel.fromWordpressCategory(rawCategory)).toList() : null,
         link: wordpressPost.link,
         id: wordpressPost.id,
       );

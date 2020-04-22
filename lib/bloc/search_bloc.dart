@@ -8,13 +8,17 @@ class SearchBloc {
   Stream<List<ArticleModel>> get currentResults => _resultsFetcher.stream;
 
   Future<List<ArticleModel>> search(String query) async {
+    // _resultsFetcher.sink.add(null);
+
+    if (query.isNotEmpty) {
+      List<ArticleModel> results = await Repository.search(query);
+      _resultsFetcher.sink.add(results);
+      // debugPrint("Aggiunto al sink degli articoli.");
+      return results;
+    }
+
     _resultsFetcher.sink.add(null);
-    List<ArticleModel> results = await Repository.search(query);
-
-    _resultsFetcher.sink.add(results);
-    // debugPrint("Aggiunto al sink degli articoli.");
-
-    return results;
+    return null;
   }
 
   dispose() {
