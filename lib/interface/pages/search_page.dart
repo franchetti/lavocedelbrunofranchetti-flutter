@@ -97,7 +97,6 @@ class _SearchPageState extends State<SearchPage> {
                             autoPlay: true,
                             aspectRatio: 7 / 5,
                             viewportFraction: 1.0,
-                            autoPlayInterval: Duration(seconds: 1),
                           ),
                           items: currentState.articles.reversed
                               .map((ArticleModel article) => ArticleSliderElement(article: article, preferences: currentState.preferences))
