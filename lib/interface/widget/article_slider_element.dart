@@ -19,7 +19,7 @@ class ArticleSliderElement extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             ColorFiltered(
-              colorFilter: ColorFilter.mode(Colors.black45, BlendMode.color),
+              colorFilter: ColorFilter.mode(Colors.black45, BlendMode.darken),
               child: CachedNetworkImage(
                 imageUrl: article.featuredMediaUrl,
                 fit: BoxFit.cover,
