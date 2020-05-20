@@ -58,7 +58,10 @@ class ArticlesPage extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                  child: Text(S.of(context).darkThemeTitle, style: Theme.of(context).textTheme.headline6,),
+                  child: Text(
+                    S.of(context).darkThemeTitle,
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
                 ),
                 SwitchListTile(
                   title: Text(S.of(context).darkTheme),
@@ -77,7 +80,10 @@ class ArticlesPage extends StatelessWidget {
                 Divider(),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                  child: Text(S.of(context).language, style: Theme.of(context).textTheme.headline6,),
+                  child: Text(
+                    S.of(context).language,
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
                 ),
                 _buildLanguageDropdown(context),
               ],

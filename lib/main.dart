@@ -26,11 +26,7 @@ class TraiLeoni extends StatelessWidget {
           ),
           themeMode: lastSettingsSnapshot.hasData ? lastSettingsSnapshot.data.themeMode : ThemeMode.system,
           locale: lastSettingsSnapshot.hasData ? lastSettingsSnapshot.data.locale : null,
-          darkTheme: ThemeData(
-            primarySwatch: Colors.orange,
-            accentColor: Colors.orange,
-            brightness: Brightness.dark
-          ),
+          darkTheme: ThemeData(primarySwatch: Colors.orange, accentColor: Colors.orange, brightness: Brightness.dark),
           localizationsDelegates: [
             S.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -41,7 +37,7 @@ class TraiLeoni extends StatelessWidget {
           routes: {
             HomeScreen.route: (BuildContext context) => HomeScreen(),
             ArticleDetailScreen.route: (BuildContext context) => ArticleDetailScreen(),
-            CategoryScreen.route:(BuildContext context)=> CategoryScreen(),
+            CategoryScreen.route: (BuildContext context) => CategoryScreen(),
           },
         );
       },

@@ -13,6 +13,7 @@ class ArticlesBloc {
   Stream<List<ArticleModel>> get currentRange => _articlesFetcher.stream;
 
   Stream<List<ArticleModel>> get savedPosts => _savedsFetcher.stream;
+
   Stream<List<ArticleModel>> get byCategory => _byCategoryFetcher.stream;
 
   Future<List<ArticleModel>> getArticles(int page, int perPage) async {

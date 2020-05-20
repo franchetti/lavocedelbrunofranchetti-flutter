@@ -15,8 +15,11 @@ class LanguageHelper {
   }
 
   static bool isEnglish(BuildContext context) {
-
-    bool isEnglish = ((settingsBloc.latestSettingsModel.locale != null && settingsBloc.latestSettingsModel.locale.languageCode != null) ? settingsBloc.latestSettingsModel.locale.languageCode : Localizations.localeOf(context).languageCode).toUpperCase() == "EN";
+    bool isEnglish = ((settingsBloc.latestSettingsModel.locale != null && settingsBloc.latestSettingsModel.locale.languageCode != null)
+                ? settingsBloc.latestSettingsModel.locale.languageCode
+                : Localizations.localeOf(context).languageCode)
+            .toUpperCase() ==
+        "EN";
     debugPrint("Il testo " + (isEnglish ? "" : "non ") + "è inglese.");
 
     return isEnglish;
