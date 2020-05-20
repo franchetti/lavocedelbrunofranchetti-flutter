@@ -1,6 +1,7 @@
 import 'package:app/bloc/settings_bloc.dart';
 import 'package:app/generated/i18n.dart';
 import 'package:app/interface/screen/article_detail_screen.dart';
+import 'package:app/interface/screen/category_screen.dart';
 import 'package:app/interface/screen/home_screen.dart';
 import 'package:app/interface/screen/splash_screen.dart';
 import 'package:app/models/settings_model.dart';
@@ -40,6 +41,7 @@ class TraiLeoni extends StatelessWidget {
           routes: {
             HomeScreen.route: (BuildContext context) => HomeScreen(),
             ArticleDetailScreen.route: (BuildContext context) => ArticleDetailScreen(),
+            CategoryScreen.route:(BuildContext context)=> CategoryScreen(),
           },
         );
       },

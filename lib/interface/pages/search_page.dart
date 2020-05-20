@@ -89,7 +89,7 @@ class _SearchPageState extends State<SearchPage> {
               ? ListView(
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0, bottom:4.0),
+                      padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0, bottom: 4.0),
                       child: AspectRatio(
                         aspectRatio: 7 / 5,
                         child: CarouselSlider(
@@ -112,7 +112,10 @@ class _SearchPageState extends State<SearchPage> {
                             shrinkWrap: true,
                             itemCount: categoriesSnapshot.data.length,
                             physics: NeverScrollableScrollPhysics(),
-                            itemBuilder: (BuildContext context, int index) => CategoryListElement(category: categoriesSnapshot.data.elementAt(index)),
+                            itemBuilder: (BuildContext context, int index) => CategoryListElement(
+                              category: categoriesSnapshot.data.elementAt(index),
+                              preferences: currentState.preferences,
+                            ),
                             separatorBuilder: (BuildContext context, int index) => Divider(height: 0.0, indent: 16.0, endIndent: 16.0),
                           );
 

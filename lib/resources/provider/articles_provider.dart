@@ -1,4 +1,5 @@
 import 'package:app/models/article_model.dart';
+import 'package:app/models/category_model.dart';
 import 'package:app/models/preferences_model.dart';
 import 'package:app/references.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +42,29 @@ class ArticlesProvider {
     rawArticles.forEach((Post rawArticle) => articles.add(ArticleModel.fromWordpressPost(rawArticle)));
 
     debugPrint("Recuperati ${rawArticles.length} articoli salvati.");
+    return articles;
+  }
+
+  static Future<List<ArticleModel>> getArticlesByCategory(CategoryModel category, {int numberOfArticles, int page}) async {
+    List<Post> rawArticles = await References.wordPress.fetchPosts(
+      postParams: ParamsPostList(
+        context: WordPressContext.view,
+        pageNum: page ?? 1,
+        perPage: numberOfArticles ?? References.articlesPerPage,
+        order: Order.desc,
+        orderBy: PostOrderBy.date,
+        includeCategories: [category.id],
+      ),
+      // fetchAuthor: true,
+      fetchFeaturedMedia: true,
+      // fetchComments: true,
+      fetchCategories: true,
+    );
+
+    List<ArticleModel> articles = List<ArticleModel>();
+    rawArticles.forEach((Post rawArticle) => articles.add(ArticleModel.fromWordpressPost(rawArticle)));
+
+    debugPrint("Recuperati ${articles.length} articoli della categoria \"${category.name}\".");
     return articles;
   }
 }

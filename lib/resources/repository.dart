@@ -17,4 +17,5 @@ class Repository {
 
   static Future<List<ArticleModel>> search(String query) async => SearchProvider.search(query);
 
+  static Future<List<ArticleModel>> getArticlesByCategory(CategoryModel category) async => ArticlesProvider.getArticlesByCategory(category);
 }
