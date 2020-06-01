@@ -54,7 +54,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
     return ListView(
       children: <Widget>[
         // Container(height: AppBar().preferredSize.height, child: References.appBar(context, "")),
-        _request.article.featuredMediaUrl.isEmpty
+        _request.article.featuredMediaUrl == null
             ? Container()
             : AspectRatio(
                 aspectRatio: 7 / 5,

@@ -8,9 +8,9 @@ import 'package:app/models/settings_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() => runApp(lavocedelbrunofranchetti());
+void main() => runApp(LaVoceDelBrunoFranchetti());
 
-class lavocedelbrunofranchetti extends StatelessWidget {
+class LaVoceDelBrunoFranchetti extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<SettingsModel>(
@@ -22,11 +22,11 @@ class lavocedelbrunofranchetti extends StatelessWidget {
           theme: ThemeData(
             dividerTheme: DividerThemeData(thickness: 1.0),
             appBarTheme: AppBarTheme(color: Colors.white, iconTheme: IconThemeData(color: Colors.black)),
-            primarySwatch: Colors.orange,
+            primarySwatch: Colors.teal,
           ),
           themeMode: lastSettingsSnapshot.hasData ? lastSettingsSnapshot.data.themeMode : ThemeMode.system,
           locale: lastSettingsSnapshot.hasData ? lastSettingsSnapshot.data.locale : null,
-          darkTheme: ThemeData(primarySwatch: Colors.orange, accentColor: Colors.orange, brightness: Brightness.dark),
+          darkTheme: ThemeData(primarySwatch: Colors.teal, accentColor: Colors.teal, brightness: Brightness.dark),
           localizationsDelegates: [
             S.delegate,
             GlobalMaterialLocalizations.delegate,
