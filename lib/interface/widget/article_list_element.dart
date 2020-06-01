@@ -1,6 +1,7 @@
 import 'package:app/generated/i18n.dart';
 import 'package:app/interface/screen/article_detail_screen.dart';
 import 'package:app/models/article_model.dart';
+import 'package:app/models/category_model.dart';
 import 'package:app/models/preferences_model.dart';
 import 'package:app/resources/utility/preferences_helper.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -36,15 +37,17 @@ class ArticleListElement extends StatelessWidget {
                       )
                     : Container(),
               ),
-              ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: article.categories.length,
-                  // scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int index) => Chip(
-                        label: Text(article.categories.elementAt(index).name),
-                        backgroundColor: Theme.of(context).primaryColor,
-                      )),
+              Align(
+                alignment: AlignmentDirectional.center,
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  spacing: 16.0,
+                  children: article.categories.map((CategoryModel category) {
+                    if (article.categories.indexOf(category) < 3) return Chip(label: Text(category.name), backgroundColor: Theme.of(context).primaryColor);
+                    return Container();
+                  }).toList(),
+                ),
+              ),
             ],
           ),
           Text(article.title, textAlign: TextAlign.center, style: Theme.of(context).textTheme.headline5),

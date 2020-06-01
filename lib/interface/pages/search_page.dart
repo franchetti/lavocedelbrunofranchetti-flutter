@@ -78,13 +78,16 @@ class _SearchPageState extends State<SearchPage> {
       stream: searchBloc.currentResults,
       // initialData: currentState.articles,
       builder: (BuildContext context, AsyncSnapshot<List<ArticleModel>> resultsSnapshot) => resultsSnapshot.hasData && state != SearchState.INACTIVE
-          ? ListView.separated(
-              // shrinkWrap: true,
-              itemBuilder: (BuildContext context, int index) =>
-                  ArticleListElementCollapsed(article: resultsSnapshot.data.elementAt(index), preferences: currentState.preferences),
-              separatorBuilder: (BuildContext context, int index) => Divider(),
-              itemCount: resultsSnapshot.data.length,
-            )
+          ? Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: ListView.separated(
+                // shrinkWrap: true,
+                itemBuilder: (BuildContext context, int index) =>
+                    ArticleListElementCollapsed(article: resultsSnapshot.data.elementAt(index), preferences: currentState.preferences),
+                separatorBuilder: (BuildContext context, int index) => Divider(),
+                itemCount: resultsSnapshot.data.length,
+              ),
+          )
           : state == SearchState.INACTIVE
               ? ListView(
                   children: <Widget>[
@@ -98,9 +101,9 @@ class _SearchPageState extends State<SearchPage> {
                             aspectRatio: 7 / 5,
                             viewportFraction: 1.0,
                           ),
-                          items: currentState.articles.reversed
-                              .map((ArticleModel article) => ArticleSliderElement(article: article, preferences: currentState.preferences))
-                              .toList(),
+                          items: currentState.articles.where((ArticleModel article) => article.featuredMediaUrl!=null).toList().reversed.map((ArticleModel article) {
+                            if (article.featuredMediaUrl != null) return ArticleSliderElement(article: article, preferences: currentState.preferences);
+                          }).toList(),
                         ),
                       ),
                     ),

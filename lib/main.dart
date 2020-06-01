@@ -8,9 +8,9 @@ import 'package:app/models/settings_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() => runApp(TraiLeoni());
+void main() => runApp(lavocedelbrunofranchetti());
 
-class TraiLeoni extends StatelessWidget {
+class lavocedelbrunofranchetti extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<SettingsModel>(

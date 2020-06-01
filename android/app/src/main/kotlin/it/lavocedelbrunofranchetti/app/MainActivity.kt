@@ -1,4 +1,4 @@
-package it.traileoni.app
+package it.lavocedelbrunofranchetti.app
 
 import io.flutter.embedding.android.FlutterActivity
 

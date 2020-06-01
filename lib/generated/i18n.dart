@@ -13,28 +13,41 @@ class S implements WidgetsLocalizations {
 
   static S current;
 
-  static const GeneratedLocalizationsDelegate delegate =
-    GeneratedLocalizationsDelegate();
+  static const GeneratedLocalizationsDelegate delegate = GeneratedLocalizationsDelegate();
 
   static S of(BuildContext context) => Localizations.of<S>(context, S);
 
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
-  String get appName => "Tra i leoni";
-  String get bocconiUniverisityNewspaper => "Bocconi University Newspaper";
+  String get appName => "La Voce del Bruno - Franchetti";
+
+  String get bocconiUniverisityNewspaper => "La Voce del Bruno - Franchetti";
+
   String get darkTheme => "Use dark theme";
+
   String get darkThemeTitle => "Dark theme";
+
   String get home => "Home";
+
   String get insertTextToSearch => "Insert your query...";
+
   String get language => "Language";
+
   String get noSaveds => "Your reading list is empty";
+
   String get readingList => "Reading list";
+
   String get saveForLater => "Add to reading list";
+
   String get saved => "Saved";
+
   String get search => "Find";
+
   String get shareThisArticle => "Share this article";
+
   String get systemTheme => "Use system theme";
+
   String get unsave => "Unsave this article";
 }
 
@@ -50,32 +63,46 @@ class $it extends S {
 
   @override
   String get saved => "Salvati";
+
   @override
   String get systemTheme => "Utilizza impostazione di sistema";
+
   @override
-  String get appName => "Tra i leoni";
+  String get appName => "La Voce del Bruno - Franchetti";
+
   @override
   String get noSaveds => "La tua lista di lettura è vuota";
+
   @override
   String get darkTheme => "Utilizza il tema scuro";
+
   @override
   String get language => "Lingua";
+
   @override
   String get darkThemeTitle => "Tema scuro";
+
   @override
-  String get bocconiUniverisityNewspaper => "Bocconi University Newspaper";
+  String get bocconiUniverisityNewspaper => "La Voce del Bruno - Franchetti";
+
   @override
   String get readingList => "Lista di lettura";
+
   @override
   String get home => "Home";
+
   @override
   String get search => "Cerca";
+
   @override
   String get shareThisArticle => "Condividi questo articolo";
+
   @override
   String get saveForLater => "Salva per dopo";
+
   @override
   String get unsave => "Rimuovi dalla lista di lettura";
+
   @override
   String get insertTextToSearch => "Inserisci del testo da cercare...";
 }
@@ -118,7 +145,7 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
           S.current = const $it();
           return SynchronousFuture<S>(S.current);
         default:
-          // NO-OP.
+        // NO-OP.
       }
     }
     S.current = const S();
@@ -176,8 +203,4 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
   }
 }
 
-String getLang(Locale l) => l == null
-  ? null
-  : l.countryCode != null && l.countryCode.isEmpty
-    ? l.languageCode
-    : l.toString();
+String getLang(Locale l) => l == null ? null : l.countryCode != null && l.countryCode.isEmpty ? l.languageCode : l.toString();

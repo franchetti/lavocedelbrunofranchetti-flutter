@@ -27,7 +27,7 @@ class ArticleModel {
   factory ArticleModel.fromWordpressPost(Post wordpressPost) => ArticleModel(
         title: parse(wordpressPost.title.rendered).documentElement.text,
         excerpt: parse(wordpressPost.excerpt.rendered).documentElement.text,
-        featuredMediaUrl: wordpressPost.featuredMedia != null ? wordpressPost.featuredMedia.link : null,
+        featuredMediaUrl: wordpressPost.featuredMedia != null ? wordpressPost.featuredMedia.sourceUrl : null,
         featuredMediaCaption: wordpressPost.featuredMedia != null ? wordpressPost.featuredMedia.title.rendered : null,
         htmlBody: wordpressPost.content.rendered,
         plainBody: parse(wordpressPost.content.rendered).documentElement.text.replaceAll("\n\n", "\n").trim(),

@@ -379,7 +379,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = it.traileoni.app;
+				PRODUCT_BUNDLE_IDENTIFIER = it.lavocedelbrunofranchetti.app;
 				PRODUCT_NAME = "Tra i Leoni";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -516,7 +516,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = it.traileoni.app;
+				PRODUCT_BUNDLE_IDENTIFIER = it.lavocedelbrunofranchetti.app;
 				PRODUCT_NAME = "Tra i Leoni";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -547,7 +547,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = it.traileoni.app;
+				PRODUCT_BUNDLE_IDENTIFIER = it.lavocedelbrunofranchetti.app;
 				PRODUCT_NAME = "Tra i Leoni";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

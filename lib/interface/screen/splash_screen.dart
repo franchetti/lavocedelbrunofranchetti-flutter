@@ -20,7 +20,7 @@ class SplashScreen extends StatelessWidget {
   Widget _buildBody(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 32.0),
-      child: Center(child: Image(image: Theme.of(context).brightness == Brightness.dark ? Images.icExtendedDark : Images.icExtended)),
+      child: Center(child: Image(image: Theme.of(context).brightness == Brightness.dark ? Images.logoLight : Images.logoDark)),
     );
   }
 }

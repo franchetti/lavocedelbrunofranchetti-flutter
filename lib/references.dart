@@ -9,7 +9,7 @@ class References {
         bottom: PreferredSize(preferredSize: Size(double.infinity, 0.0), child: Divider(height: 0.0)),
       );
 
-  static WordPress wordPress = WordPress(baseUrl: "https://www.traileoni.it/");
+  static WordPress wordPress = WordPress(baseUrl: "https://istitutobrunofranchetti.edu.it/giornalino/");
 
   static int articlesPerPage = 20;
 }

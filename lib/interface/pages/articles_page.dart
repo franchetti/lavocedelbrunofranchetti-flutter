@@ -1,4 +1,5 @@
 import 'package:app/assets.dart';
+import 'package:app/bloc/articles_bloc.dart';
 import 'package:app/bloc/settings_bloc.dart';
 import 'package:app/generated/i18n.dart';
 import 'package:app/interface/widget/article_list_element.dart';
@@ -18,14 +19,14 @@ class ArticlesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image(image: Theme.of(context).brightness == Brightness.dark ? Images.icExtendedDark : Images.icExtended, fit: BoxFit.fitHeight, height: 40.0),
+        title: Image(image: Theme.of(context).brightness == Brightness.dark ? Images.logoLight : Images.logoDark, fit: BoxFit.fitHeight, height: 40.0),
         centerTitle: true,
       ),
       drawer: _buildDrawer(context),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: ListView.separated(
-          itemBuilder: (BuildContext context, int index) => index.isEven
+          itemBuilder: (BuildContext context, int index) => currentState.articles.elementAt(index).featuredMediaUrl != null
               ? ArticleListElement(article: currentState.articles.elementAt(index), preferences: currentState.preferences)
               : ArticleListElement.reduced(article: currentState.articles.elementAt(index), preferences: currentState.preferences),
           separatorBuilder: (BuildContext context, int index) => Divider(),
@@ -45,9 +46,10 @@ class ArticlesPage extends StatelessWidget {
               children: <Widget>[
                 DrawerHeader(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisSize: MainAxisSize.max,
                     children: <Widget>[
-                      Expanded(child: Image(image: Theme.of(context).brightness == Brightness.dark ? Images.icExtendedDark : Images.icExtended)),
+                      Expanded(child: Image(image: Theme.of(context).brightness == Brightness.dark ? Images.logoLight : Images.logoDark)),
                       Text(
                         S.of(context).bocconiUniverisityNewspaper.toUpperCase(),
                         style: Theme.of(context).textTheme.caption.copyWith(letterSpacing: 1.0, fontStyle: FontStyle.italic),
