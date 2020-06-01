@@ -46,6 +46,7 @@ dev_dependencies:
     sdk: flutter
 
   flutter_launcher_icons: ^0.7.4
+  # flutter pub run flutter_launcher_icons:main
   r_flutter: ^0.6.0
   # flutter packages pub run r_flutter:generate
 
@@ -58,6 +59,7 @@ flutter:
     - assets/
 
 flutter_icons:
-  image_path: "assets/ic_launcher.png"
+  image_path_android: "assets/ic_launcher_android.jpg"
+  image_path_ios: "assets/ic_launcher_ios.jpg"
   android: true
   ios: false
