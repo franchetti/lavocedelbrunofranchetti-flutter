@@ -59,7 +59,7 @@ flutter:
     - assets/
 
 flutter_icons:
-  image_path_android: "assets/ic_launcher_android.jpg"
+  image_path_android: "assets/logo_dark.png"
   image_path_ios: "assets/ic_launcher_ios.jpg"
   android: true
   ios: false
