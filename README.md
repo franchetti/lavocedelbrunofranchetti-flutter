@@ -2,7 +2,46 @@
 
 Client per il giornalino d'Istituto dell'Istituto Bruno - Franchetti.
 
-## Premessa
+## Come testarla
+
+### Android
+
+#### Distribuzioni binarie
+
+Per testare l'app su Android, è possibile scaricare un apk precompilato dalla 
+
+[sezione 'releases' di questa repository](https://github.com/franchetti/lavocedelbrunofranchetti-flutter/releases).
+
+#### Build del codice sorgente
+Alternativamente, è possibile clonare questa repository e compilare l'apk tramite i comandi:
+
+```
+flutter channel master && flutter upgrade // Per passare alla versione più aggiornata possibile di Flutter.
+flutter pub get
+flutter build apk
+flutter install apk // Per installare l'app sul dispositivo.
+```
+
+### iOS
+
+#### Build del codice sorgente
+
+Per effettuare la build su iOS e testare un progetto locale, è necessario clonare la repository nel proprio spazio di lavoro, e disporre di Xcode installato nella versione più aggiornata possibile.
+
+Una volta aperto il file `ios/Runner.xcworkspace`, è possibile andare a selezionare il team di firma dell'app: sarà sufficiente selezionare il proprio Apple ID (a cui si sarà eseguito l'accesso tramite le impostazioni di Xcode).
+
+Una volta completata la configurazione di firma dell'app, sarà sufficiente eseguire da terminale:
+
+```
+flutter channel master && flutter upgrade // Per passare alla versione più aggiornata possibile di Flutter.
+flutter pub get
+flutter build ios
+flutter install ios // Per installare l'app sul dispositivo.
+```
+
+
+
+## Struttura
 
 La funzionalità dell'app, costituita di tre elementi essenziali, è principalmente distribuita nelle questioni di:
 
