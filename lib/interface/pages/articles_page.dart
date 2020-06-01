@@ -1,5 +1,4 @@
 import 'package:app/assets.dart';
-import 'package:app/bloc/articles_bloc.dart';
 import 'package:app/bloc/settings_bloc.dart';
 import 'package:app/generated/i18n.dart';
 import 'package:app/interface/widget/article_list_element.dart';
