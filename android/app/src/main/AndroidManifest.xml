@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="Lo Voce del Bruno - Franchetti"
+        android:label="La Voce del Bruno - Franchetti"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
