@@ -49,9 +49,11 @@ class ArticlesPage extends StatelessWidget {
                     mainAxisSize: MainAxisSize.max,
                     children: <Widget>[
                       Expanded(child: Image(image: Theme.of(context).brightness == Brightness.dark ? Images.logoLight : Images.logoDark)),
-                      Text(
-                        S.of(context).bocconiUniverisityNewspaper.toUpperCase(),
-                        style: Theme.of(context).textTheme.caption.copyWith(letterSpacing: 1.0, fontStyle: FontStyle.italic),
+                      Center(
+                        child: Text(
+                          S.of(context).bocconiUniverisityNewspaper.toUpperCase(),
+                          style: Theme.of(context).textTheme.caption.copyWith(letterSpacing: 1.0, fontStyle: FontStyle.italic),
+                        ),
                       ),
                       // Text(S.of(context).appName),
                     ],
@@ -91,10 +93,10 @@ class ArticlesPage extends StatelessWidget {
             ),
           ),
           // TODO: Valutare la questione.
-          /*Padding(
+          Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text("© 2020 Emilio Dalla Torre"),
-          )*/
+          ),
         ],
       ),
     );
