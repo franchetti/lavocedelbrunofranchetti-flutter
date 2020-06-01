@@ -1,16 +1,17 @@
-# app
+# La Voce del Bruno - Franchetti
 
-A new Flutter application.
+Client per il giornalino d'Istituto dell'Istituto Bruno - Franchetti.
 
-## Getting Started
+## Premessa
 
-This project is a starting point for a Flutter application.
+La funzionalità dell'app, costituita di tre elementi essenziali, è principalmente distribuita nelle questioni di:
 
-A few resources to get you started if this is your first Flutter project:
+1. Parsing dei dati dal sito web tramite REST API di WordPress
+2. Visualizzazione dei dati ottenuti dal sito
+3. Manipolazioni indirette dei dati tramite riferimento, quali la condivisione di articoli tramite link e il loro salvataggio in una memoria locale
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Future implementazioni
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [ ] Caching degli articoli in una memoria locale
+- [ ] Modifica a monte del meccanismo delle REST API per fornire i media degli articoli senza la necessità di effettuare una chiamata API ad ogni articolo cercato
+- [ ] Implementazione del deeplinking per aprire l'app dal sito
