@@ -23,6 +23,7 @@ class LaVoceDelBrunoFranchetti extends StatelessWidget {
             dividerTheme: DividerThemeData(thickness: 1.0),
             appBarTheme: AppBarTheme(color: Colors.white, iconTheme: IconThemeData(color: Colors.black)),
             primarySwatch: Colors.teal,
+            chipTheme: ChipThemeData.fromDefaults(secondaryColor: Colors.teal, labelStyle: TextStyle(color: Colors.white)),
           ),
           themeMode: lastSettingsSnapshot.hasData ? lastSettingsSnapshot.data.themeMode : ThemeMode.system,
           locale: lastSettingsSnapshot.hasData ? lastSettingsSnapshot.data.locale : null,
