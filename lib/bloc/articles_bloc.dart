@@ -1,3 +1,4 @@
+import 'package:app/bloc/currentstate_bloc.dart';
 import 'package:app/models/article_model.dart';
 import 'package:app/models/category_model.dart';
 import 'package:app/models/preferences_model.dart';
@@ -16,11 +17,12 @@ class ArticlesBloc {
 
   Stream<List<ArticleModel>> get byCategory => _byCategoryFetcher.stream;
 
-  Future<List<ArticleModel>> getArticles(int page, int perPage) async {
-    List<ArticleModel> articles = await Repository.getArticles(page, perPage);
+  Future<List<ArticleModel>> getArticles(int page, int perPage, {bool full}) async {
+    List<ArticleModel> articles = await Repository.getArticles(page, perPage, full: full);
 
     _articlesFetcher.sink.add(articles);
     debugPrint("Aggiunto al sink degli articoli.");
+    if(full) currentStateBloc.updateFullness(full);
 
     return articles;
   }

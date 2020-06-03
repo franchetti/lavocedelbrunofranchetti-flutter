@@ -7,7 +7,7 @@ import 'package:app/resources/provider/preferences_provider.dart';
 import 'package:app/resources/provider/search_provider.dart';
 
 class Repository {
-  static Future<List<ArticleModel>> getArticles(int page, int perPage) async => ArticlesProvider.getArticles(page, perPage);
+  static Future<List<ArticleModel>> getArticles(int page, int perPage, {bool full}) async => ArticlesProvider.getArticles(page, perPage, full: full);
 
   static Future<List<CategoryModel>> getCategories() async => CategoriesProvider.getCategories();
 

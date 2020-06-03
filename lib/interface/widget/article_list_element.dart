@@ -7,6 +7,7 @@ import 'package:app/resources/utility/preferences_helper.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ArticleListElement extends StatelessWidget {
   final ArticleModel article;
@@ -42,10 +43,28 @@ class ArticleListElement extends StatelessWidget {
                 child: Wrap(
                   alignment: WrapAlignment.center,
                   spacing: 16.0,
-                  children: article.categories.map((CategoryModel category) {
-                    if (article.categories.indexOf(category) < 3) return Chip(label: Text(category.name), backgroundColor: Theme.of(context).primaryColor);
-                    return Container();
-                  }).toList(),
+                  children: article.categories == null
+                      ? [
+                          Shimmer.fromColors(
+                            baseColor: Colors.grey,
+                            highlightColor: Colors.white,
+                            child: Chip(label: Text("Caricamento...")),
+                          ),
+                          Shimmer.fromColors(
+                            baseColor: Colors.grey,
+                            highlightColor: Colors.white,
+                            child: Chip(label: Text("Caricamento...")),
+                          ),
+                          Shimmer.fromColors(
+                            baseColor: Colors.grey,
+                            highlightColor: Colors.white,
+                            child: Chip(label: Text("Caricamento...")),
+                          ),
+                        ]
+                      : article.categories.map((CategoryModel category) {
+                          if (article.categories.indexOf(category) < 3) return Chip(label: Text(category.name));
+                          return Container();
+                        }).toList(),
                 ),
               ),
             ],

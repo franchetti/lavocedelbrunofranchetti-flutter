@@ -1,4 +1,5 @@
 import 'package:app/bloc/categories_bloc.dart';
+import 'package:app/bloc/currentstate_bloc.dart';
 import 'package:app/bloc/search_bloc.dart';
 import 'package:app/generated/i18n.dart';
 import 'package:app/interface/widget/article_list_element_collapsed.dart';
@@ -21,7 +22,7 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  final CurrentStateModel currentState;
+  CurrentStateModel currentState;
 
   _SearchPageState({@required this.currentState});
 
@@ -39,6 +40,8 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
+    currentStateBloc.currentState.listen((onStateUpdate) => setState(()=> currentState = onStateUpdate));
+
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -91,7 +94,7 @@ class _SearchPageState extends State<SearchPage> {
           : state == SearchState.INACTIVE
               ? ListView(
                   children: <Widget>[
-                    Padding(
+                    currentState.full ? Padding(
                       padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0, bottom: 4.0),
                       child: AspectRatio(
                         aspectRatio: 7 / 5,
@@ -106,11 +109,12 @@ class _SearchPageState extends State<SearchPage> {
                               .toList()
                               .reversed
                               .map((ArticleModel article) {
-                            if (article.featuredMediaUrl != null) return ArticleSliderElement(article: article, preferences: currentState.preferences);
+                                debugPrint("Analizzo articolo.");
+                            return ArticleSliderElement(article: article, preferences: currentState.preferences);
                           }).toList(),
                         ),
                       ),
-                    ),
+                    ) : Container(),
                     StreamBuilder<List<CategoryModel>>(
                       stream: categoriesBloc.allCategories,
                       builder: (BuildContext context, AsyncSnapshot<List<CategoryModel>> categoriesSnapshot) {

@@ -7,11 +7,13 @@ class CurrentStateModel {
   PreferencesModel preferences;
   List<ArticleModel> saveds;
   List<CategoryModel> categories;
+  bool full;
 
   CurrentStateModel({
     this.articles,
     this.preferences,
     this.saveds,
     this.categories,
+    this.full,
   });
 }

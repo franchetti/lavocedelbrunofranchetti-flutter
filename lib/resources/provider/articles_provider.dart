@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_wordpress/flutter_wordpress.dart';
 
 class ArticlesProvider {
-  static Future<List<ArticleModel>> getArticles(int page, int perPage) async {
+  static Future<List<ArticleModel>> getArticles(int page, int perPage, {bool full}) async {
+    DateTime startTime = DateTime.now();
+
     List<Post> rawArticles = await References.wordPress.fetchPosts(
       postParams: ParamsPostList(
         context: WordPressContext.view,
@@ -16,15 +18,16 @@ class ArticlesProvider {
         orderBy: PostOrderBy.date,
       ),
       // fetchAuthor: true,
-      fetchFeaturedMedia: true,
+      fetchFeaturedMedia: full ?? true,
       // fetchComments: true,
-      fetchCategories: true,
+      fetchCategories: full ?? true,
     );
 
     List<ArticleModel> articles = List<ArticleModel>();
     rawArticles.forEach((Post rawArticle) => articles.add(ArticleModel.fromWordpressPost(rawArticle)));
 
-    debugPrint("Recuperati $perPage articoli.");
+    debugPrint("Recuperati $perPage articoli in ${DateTime.now().difference(startTime).inSeconds} secondi.");
+    debugPrint("Gli articoli ${!(full ?? true) ? "non" : ""} sono completi.");
     return articles;
   }
 

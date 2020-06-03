@@ -19,16 +19,20 @@ class CurrentStateBloc {
 
     CurrentStateModel localCurrentState = CurrentStateModel();
 
-    localCurrentState.articles = await articlesBloc.getArticles(1, References.articlesPerPage);
+    localCurrentState.articles = await articlesBloc.getArticles(1, References.articlesPerPage, full: false);
+    localCurrentState.full = false;
+
     localCurrentState.preferences = await preferencesBloc.getPreferences();
     localCurrentState.saveds = await articlesBloc.getSaveds(localCurrentState.preferences);
 
     latestState = localCurrentState;
 
     _currentStateFetcher.sink.add(latestState);
+    debugPrint("Aggiunto al sink dello stato.");
 
     preferencesBloc.currentPreferences.listen(updatePreferences);
     articlesBloc.savedPosts.listen(updateSaveds);
+    articlesBloc.currentRange.listen(updateArticles);
 
     return localCurrentState;
   }
@@ -45,6 +49,22 @@ class CurrentStateBloc {
   CurrentStateModel updateSaveds(List<ArticleModel> saveds) {
     latestState.saveds = saveds;
     _currentStateFetcher.sink.add(latestState);
+
+    return latestState;
+  }
+
+  CurrentStateModel updateArticles(List<ArticleModel> articles) {
+    latestState.articles = articles;
+    _currentStateFetcher.sink.add(latestState);
+
+    return latestState;
+  }
+
+  CurrentStateModel updateFullness(bool full) {
+    latestState.full = full;
+    _currentStateFetcher.add(latestState);
+
+    debugPrint("Lo stato degli articoli è ora " + (full ? "completo" : "incompleto") + ".");
 
     return latestState;
   }
