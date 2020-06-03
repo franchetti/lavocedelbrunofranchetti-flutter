@@ -24,6 +24,30 @@ class ArticleListElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> waitingShimmer = List<Widget>();
+
+    Color baseColor, highlightColor;
+
+    switch (Theme.of(context).brightness) {
+      case Brightness.dark:
+        baseColor = Theme.of(context).highlightColor;
+        highlightColor = Theme.of(context).canvasColor;
+        break;
+      case Brightness.light:
+        baseColor = Colors.grey;
+        highlightColor = Colors.white;
+        break;
+    }
+
+    for (int index = 0; index < 3; index++)
+      waitingShimmer.add(
+        Shimmer.fromColors(
+          baseColor: baseColor,
+          highlightColor: highlightColor,
+          child: Chip(label: Text("Caricamento...")),
+        ),
+      );
+
     return InkWell(
       child: Column(
         children: <Widget>[
@@ -44,23 +68,7 @@ class ArticleListElement extends StatelessWidget {
                   alignment: WrapAlignment.center,
                   spacing: 16.0,
                   children: article.categories == null
-                      ? [
-                          Shimmer.fromColors(
-                            baseColor: Colors.grey,
-                            highlightColor: Colors.white,
-                            child: Chip(label: Text("Caricamento...")),
-                          ),
-                          Shimmer.fromColors(
-                            baseColor: Colors.grey,
-                            highlightColor: Colors.white,
-                            child: Chip(label: Text("Caricamento...")),
-                          ),
-                          Shimmer.fromColors(
-                            baseColor: Colors.grey,
-                            highlightColor: Colors.white,
-                            child: Chip(label: Text("Caricamento...")),
-                          ),
-                        ]
+                      ? waitingShimmer
                       : article.categories.map((CategoryModel category) {
                           if (article.categories.indexOf(category) < 3) return Chip(label: Text(category.name));
                           return Container();
