@@ -17,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  CurrentStateModel currentState;
   int currentIndex;
   FocusNode focusNode;
 
@@ -37,6 +38,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    currentState = ModalRoute.of(context).settings.arguments;
+
     return Scaffold(
       // appBar: References.appBar(context),
       body: _buildBody(context),
@@ -47,6 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildBody(BuildContext context) {
     return StreamBuilder<CurrentStateModel>(
       stream: currentStateBloc.currentState,
+      initialData: currentState,
       builder: (BuildContext context, AsyncSnapshot<CurrentStateModel> currentStateSnapshot) {
         debugPrint("Aggiorno la visualizzazione.");
         if (currentStateSnapshot.hasData) {

@@ -8,9 +8,9 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     settingsBloc.initialize(context);
-    currentStateBloc.initialize();
+    currentStateBloc.initialize().then((onArticles) => Navigator.of(context).pushReplacementNamed(HomeScreen.route, arguments: onArticles));
 
-    WidgetsBinding.instance.addPostFrameCallback((onFirstFrame) => Navigator.of(context).pushReplacementNamed(HomeScreen.route));
+    // WidgetsBinding.instance.addPostFrameCallback((onFirstFrame) => );
 
     return Scaffold(
       // backgroundColor: Colors.orange,
@@ -19,9 +19,13 @@ class SplashScreen extends StatelessWidget {
   }
 
   Widget _buildBody(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 32.0),
-      child: Center(child: Image(image: Theme.of(context).brightness == Brightness.dark ? Images.logoLight : Images.logoDark)),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Spacer(),
+        Expanded(flex: 2, child: Image(image: Theme.of(context).brightness == Brightness.dark ? Images.logoLight : Images.logoDark)),
+        Spacer(),
+      ],
     );
   }
 }
