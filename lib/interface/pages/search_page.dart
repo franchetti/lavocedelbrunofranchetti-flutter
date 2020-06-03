@@ -40,7 +40,7 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    currentStateBloc.currentState.listen((onStateUpdate) => setState(()=> currentState = onStateUpdate));
+    currentStateBloc.currentState.listen((onStateUpdate) => setState(() => currentState = onStateUpdate));
 
     return Scaffold(
       appBar: AppBar(
@@ -94,27 +94,29 @@ class _SearchPageState extends State<SearchPage> {
           : state == SearchState.INACTIVE
               ? ListView(
                   children: <Widget>[
-                    currentState.full ? Padding(
-                      padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0, bottom: 4.0),
-                      child: AspectRatio(
-                        aspectRatio: 7 / 5,
-                        child: CarouselSlider(
-                          options: CarouselOptions(
-                            autoPlay: true,
-                            aspectRatio: 7 / 5,
-                            viewportFraction: 1.0,
-                          ),
-                          items: currentState.articles
-                              .where((ArticleModel article) => article.featuredMediaUrl != null)
-                              .toList()
-                              .reversed
-                              .map((ArticleModel article) {
-                                debugPrint("Analizzo articolo.");
-                            return ArticleSliderElement(article: article, preferences: currentState.preferences);
-                          }).toList(),
-                        ),
-                      ),
-                    ) : Container(),
+                    currentState.full
+                        ? Padding(
+                            padding: EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0, bottom: 4.0),
+                            child: AspectRatio(
+                              aspectRatio: 7 / 5,
+                              child: CarouselSlider(
+                                options: CarouselOptions(
+                                  autoPlay: true,
+                                  aspectRatio: 7 / 5,
+                                  viewportFraction: 1.0,
+                                ),
+                                items: currentState.articles
+                                    .where((ArticleModel article) => article.featuredMediaUrl != null)
+                                    .toList()
+                                    .reversed
+                                    .map((ArticleModel article) {
+                                  debugPrint("Analizzo articolo.");
+                                  return ArticleSliderElement(article: article, preferences: currentState.preferences);
+                                }).toList(),
+                              ),
+                            ),
+                          )
+                        : Container(),
                     StreamBuilder<List<CategoryModel>>(
                       stream: categoriesBloc.allCategories,
                       builder: (BuildContext context, AsyncSnapshot<List<CategoryModel>> categoriesSnapshot) {

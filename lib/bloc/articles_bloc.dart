@@ -22,7 +22,7 @@ class ArticlesBloc {
 
     _articlesFetcher.sink.add(articles);
     debugPrint("Aggiunto al sink degli articoli.");
-    if(full) currentStateBloc.updateFullness(full);
+    if (full) currentStateBloc.updateFullness(full);
 
     return articles;
   }
