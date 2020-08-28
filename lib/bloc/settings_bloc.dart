@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:app/models/settings_model.dart';
 import 'package:app/resources/utility/preferences_helper.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +21,7 @@ class SettingsBloc {
   Future<void> initialize(BuildContext context) async {
     if (latestSettingsModel == null) {
       // Vedere se c'è uno stato salvato.
-      if (true) {
+      if (!!(Platform.isLinux || Platform.isWindows || Platform.isMacOS)) {
         latestSettingsModel = await PreferencesHelper.getSettings();
         updateVisualization();
       }
@@ -37,7 +39,7 @@ class SettingsBloc {
 
   String currentLocaleIso() {
     String currentLocaleIso =
-        "${settingsBloc.latestSettingsModel.locale.languageCode}${settingsBloc.latestSettingsModel.locale.countryCode == null ? "" : "_${settingsBloc.latestSettingsModel.locale.countryCode}"}";
+        "${settingsBloc.latestSettingsModel.locale.languageCode}${settingsBloc.latestSettingsModel.locale.countryCode.isEmpty ? "" : "_${settingsBloc.latestSettingsModel.locale.countryCode}"}";
 
     return currentLocaleIso;
   }

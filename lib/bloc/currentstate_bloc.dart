@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:app/bloc/articles_bloc.dart';
 import 'package:app/bloc/preferences_bloc.dart';
 import 'package:app/models/article_model.dart';
@@ -22,7 +24,11 @@ class CurrentStateBloc {
     localCurrentState.articles = await articlesBloc.getArticles(1, References.articlesPerPage, full: false);
     localCurrentState.full = false;
 
-    localCurrentState.preferences = await preferencesBloc.getPreferences();
+    if (!(Platform.isLinux || Platform.isWindows || Platform.isMacOS))
+      localCurrentState.preferences = await preferencesBloc.getPreferences();
+    else
+      localCurrentState.preferences = PreferencesModel(savedPosts: List<int>());
+
     localCurrentState.saveds = await articlesBloc.getSaveds(localCurrentState.preferences);
 
     latestState = localCurrentState;
