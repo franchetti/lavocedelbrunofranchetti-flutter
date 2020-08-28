@@ -42,37 +42,51 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     currentStateBloc.currentState.listen((onStateUpdate) => setState(() => currentState = onStateUpdate));
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: <Widget>[
-            Expanded(
-              child: TextField(
-                decoration: InputDecoration(labelText: S.of(context).insertTextToSearch),
-                controller: _searchController,
-                keyboardType: TextInputType.text,
-                textInputAction: TextInputAction.search,
-                onSubmitted: (String query) {
-                  searchBloc.search(query);
-                  FocusScope.of(context).requestFocus(FocusNode());
-                  setState(() => state = SearchState.SEARCHING);
-                },
-                focusNode: widget.focusNode,
+    return WillPopScope(
+      onWillPop: () {
+        if (widget.focusNode.hasFocus) {
+          searchBloc.search("");
+          _searchController.clear();
+          setState(() => state = SearchState.INACTIVE);
+          FocusScope.of(context).requestFocus(FocusNode());
+
+          return Future.value(false);
+        } else {
+          return Future.value(true);
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Row(
+            children: <Widget>[
+              Expanded(
+                child: TextField(
+                  decoration: InputDecoration(labelText: S.of(context).insertTextToSearch, border: InputBorder.none),
+                  controller: _searchController,
+                  keyboardType: TextInputType.text,
+                  textInputAction: TextInputAction.search,
+                  onSubmitted: (String query) {
+                    searchBloc.search(query);
+                    FocusScope.of(context).requestFocus(FocusNode());
+                    setState(() => state = SearchState.SEARCHING);
+                  },
+                  focusNode: widget.focusNode,
+                ),
               ),
-            ),
-            IconButton(
-              icon: Icon(Icons.backspace, color: Theme.of(context).accentColor),
-              onPressed: () {
-                searchBloc.search("");
-                _searchController.clear();
-                setState(() => state = SearchState.INACTIVE);
-                FocusScope.of(context).requestFocus(FocusNode());
-              },
-            )
-          ],
+              IconButton(
+                icon: Icon(Icons.backspace, color: Theme.of(context).accentColor),
+                onPressed: () {
+                  searchBloc.search("");
+                  _searchController.clear();
+                  setState(() => state = SearchState.INACTIVE);
+                  FocusScope.of(context).requestFocus(FocusNode());
+                },
+              )
+            ],
+          ),
         ),
+        body: _buildBody(context),
       ),
-      body: _buildBody(context),
     );
   }
 
