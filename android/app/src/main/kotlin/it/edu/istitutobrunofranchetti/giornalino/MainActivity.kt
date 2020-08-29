@@ -1,4 +1,4 @@
-package it.lavocedelbrunofranchetti.app
+package it.edu.istitutobrunofranchetti.giornalino
 
 import io.flutter.embedding.android.FlutterActivity
 
