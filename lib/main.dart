@@ -5,6 +5,7 @@ import 'package:app/interface/screen/category_screen.dart';
 import 'package:app/interface/screen/home_screen.dart';
 import 'package:app/interface/screen/splash_screen.dart';
 import 'package:app/models/settings_model.dart';
+import 'package:app/references.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -17,8 +18,8 @@ class LaVoceDelBrunoFranchetti extends StatelessWidget {
       stream: settingsBloc.lastSettings,
       builder: (BuildContext context, AsyncSnapshot<SettingsModel> lastSettingsSnapshot) {
         return MaterialApp(
-          // Non è possibile tradurre questa stringa perché S non è ancora inizializzato.
-          title: "Tra i leoni",
+          debugShowCheckedModeBanner: false,
+          title: References.appName,
           theme: ThemeData(
             dividerTheme: DividerThemeData(thickness: 1.0),
             appBarTheme: AppBarTheme(color: Colors.white, iconTheme: IconThemeData(color: Colors.black)),

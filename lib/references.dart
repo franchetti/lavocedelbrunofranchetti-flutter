@@ -12,4 +12,6 @@ class References {
   static WordPress wordPress = WordPress(baseUrl: "https://istitutobrunofranchetti.edu.it/giornalino/");
 
   static int articlesPerPage = 10;
+
+  static const String appName = "La Voce del Bruno - Franchetti";
 }
