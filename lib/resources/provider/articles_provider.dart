@@ -23,7 +23,7 @@ class ArticlesProvider {
       fetchCategories: full ?? true,
     );
 
-    List<ArticleModel> articles = List<ArticleModel>();
+    List<ArticleModel> articles = <ArticleModel>[];
     rawArticles.forEach((Post rawArticle) => articles.add(ArticleModel.fromWordpressPost(rawArticle)));
 
     debugPrint("Recuperati $perPage articoli in ${DateTime.now().difference(startTime).inSeconds} secondi.");
@@ -34,14 +34,14 @@ class ArticlesProvider {
   static Future<List<ArticleModel>> getSaveds(PreferencesModel preferences) async {
     if (preferences.savedPosts.isEmpty) {
       debugPrint("Non ci sono articoli salvati, restituisco vuoto.");
-      return List<ArticleModel>();
+      return <ArticleModel>[];
     }
     debugPrint("Cerco gli articoli salvati: " + preferences.savedPosts.toString() + ".");
 
     List<Post> rawArticles =
         await References.wordPress.fetchPosts(postParams: ParamsPostList(includePostIDs: preferences.savedPosts), fetchFeaturedMedia: true);
 
-    List<ArticleModel> articles = List<ArticleModel>();
+    List<ArticleModel> articles = <ArticleModel>[];
     rawArticles.forEach((Post rawArticle) => articles.add(ArticleModel.fromWordpressPost(rawArticle)));
 
     debugPrint("Recuperati ${rawArticles.length} articoli salvati.");
@@ -64,7 +64,7 @@ class ArticlesProvider {
       fetchCategories: true,
     );
 
-    List<ArticleModel> articles = List<ArticleModel>();
+    List<ArticleModel> articles = <ArticleModel>[];
     rawArticles.forEach((Post rawArticle) => articles.add(ArticleModel.fromWordpressPost(rawArticle)));
 
     debugPrint("Recuperati ${articles.length} articoli della categoria \"${category.name}\".");

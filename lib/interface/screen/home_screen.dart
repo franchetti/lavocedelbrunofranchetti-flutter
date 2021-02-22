@@ -86,9 +86,9 @@ class _HomeScreenState extends State<HomeScreen> {
         setState(() => currentIndex = newIndex);
       },
       items: <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.newspaper), title: Text(S.of(context).home)),
-        BottomNavigationBarItem(icon: Icon(Icons.search), title: Text(S.of(context).search)),
-        BottomNavigationBarItem(icon: Icon(Icons.bookmark_border), title: Text(S.of(context).saved)),
+        BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.newspaper), label: S.of(context).home),
+        BottomNavigationBarItem(icon: Icon(Icons.search), label: S.of(context).search),
+        BottomNavigationBarItem(icon: Icon(Icons.bookmark_border), label: S.of(context).saved),
       ],
     );
   }

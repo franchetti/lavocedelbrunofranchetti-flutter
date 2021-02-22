@@ -4,6 +4,7 @@ import 'package:app/interface/screen/article_detail_screen.dart';
 import 'package:app/interface/screen/category_screen.dart';
 import 'package:app/interface/screen/home_screen.dart';
 import 'package:app/interface/screen/splash_screen.dart';
+import 'package:app/interface/screen/webview_screen.dart';
 import 'package:app/models/settings_model.dart';
 import 'package:app/references.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +41,7 @@ class LaVoceDelBrunoFranchetti extends StatelessWidget {
             HomeScreen.route: (BuildContext context) => HomeScreen(),
             ArticleDetailScreen.route: (BuildContext context) => ArticleDetailScreen(),
             CategoryScreen.route: (BuildContext context) => CategoryScreen(),
+            WebViewScreen.route: (BuildContext context) => WebViewScreen(),
           },
         );
       },

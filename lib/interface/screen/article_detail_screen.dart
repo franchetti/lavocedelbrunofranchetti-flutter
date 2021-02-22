@@ -1,3 +1,4 @@
+import 'package:app/interface/screen/webview_screen.dart';
 import 'package:app/models/article_model.dart';
 import 'package:app/models/preferences_model.dart';
 import 'package:app/resources/utility/preferences_helper.dart';
@@ -71,7 +72,10 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
             children: <Widget>[
               Text(_request.article.title, style: Theme.of(context).textTheme.headline5),
               Divider(),
-              Html(data: _request.article.htmlBody),
+              Html(
+                data: _request.article.htmlBody,
+                onLinkTap: (String link) => Navigator.of(context).pushNamed(WebViewScreen.route, arguments: link),
+              ),
             ],
           ),
         ),

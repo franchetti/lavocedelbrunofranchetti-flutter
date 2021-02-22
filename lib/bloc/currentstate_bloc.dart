@@ -27,7 +27,7 @@ class CurrentStateBloc {
     if (!(Platform.isLinux || Platform.isWindows || Platform.isMacOS))
       localCurrentState.preferences = await preferencesBloc.getPreferences();
     else
-      localCurrentState.preferences = PreferencesModel(savedPosts: List<int>());
+      localCurrentState.preferences = PreferencesModel(savedPosts: <int>[]);
 
     localCurrentState.saveds = await articlesBloc.getSaveds(localCurrentState.preferences);
 

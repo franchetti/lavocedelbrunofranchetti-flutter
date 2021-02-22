@@ -18,7 +18,7 @@ class SearchProvider {
       fetchCategories: true,
     );
 
-    List<ArticleModel> articles = List<ArticleModel>();
+    List<ArticleModel> articles = <ArticleModel>[];
     rawArticles.forEach((Post rawArticle) => articles.add(ArticleModel.fromWordpressPost(rawArticle)));
 
     debugPrint("Recuperati ${articles.length} articoli con la query $query.");

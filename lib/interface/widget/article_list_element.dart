@@ -24,7 +24,7 @@ class ArticleListElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> waitingShimmer = List<Widget>();
+    List<Widget> waitingShimmer = <Widget>[];
 
     Color baseColor, highlightColor;
 
