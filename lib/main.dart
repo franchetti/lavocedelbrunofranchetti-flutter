@@ -19,7 +19,6 @@ class LaVoceDelBrunoFranchetti extends StatelessWidget {
       stream: settingsBloc.lastSettings,
       builder: (BuildContext context, AsyncSnapshot<SettingsModel> lastSettingsSnapshot) {
         return MaterialApp(
-          debugShowCheckedModeBanner: false,
           title: References.appName,
           theme: ThemeData(
             dividerTheme: DividerThemeData(thickness: 1.0),
